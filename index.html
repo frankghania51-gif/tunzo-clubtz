@@ -3,34 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vodacom Tunzo — Fungua Zawadi Yako</title>
+<title>Vodacom Tunzo — Zawadi Zako</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  /* ===== RESET & ROOT ===== */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
   :root {
-    --bg: #0B0D0A;
-    --bg-card: #131711;
-    --bg-card-hover: #1A1F16;
-    --border: #262D22;
-    --border-hover: #E2001A;
-    --text: #F0EDE4;
-    --text-muted: #8A8A7A;
-    --red: #E2001A;
-    --red-dark: #B30014;
+    --ink: #12160F;
+    --ink-soft: #1B211A;
+    --paper: #F6F1E4;
+    --paper-dim: #EAE3CF;
     --gold: #F2A93B;
-    --gold-dim: rgba(242, 169, 59, 0.12);
+    --gold-deep: #C9821F;
+    --gold-glow: rgba(242, 169, 59, 0.25);
     --green: #23A566;
-    --radius: 14px;
+    --green-deep: #187848;
+    --maroon: #7C2A38;
+    --mist: #A9A48C;
+    --line: #33392F;
+    --vodacom-red: #E2001A;
+    --vodacom-red-dark: #B30014;
+    --vodacom-red-light: #FFE8EA;
+    --vodacom-green: #00A651;
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Work Sans', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
+    --card-radius: 16px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   html {
@@ -38,17 +41,21 @@
   }
 
   body {
-    background: var(--bg);
-    color: var(--text);
+    background: var(--ink);
+    color: var(--paper);
     font-family: var(--font-body);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    padding: 0 16px;
   }
 
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
   a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
   }
   button {
     font-family: inherit;
@@ -56,159 +63,365 @@
     border: none;
   }
 
-  .wrap {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 8px;
-  }
-
   ::selection {
-    background: var(--red);
+    background: var(--vodacom-red);
     color: #fff;
   }
 
-  /* ===== HEADER ===== */
-  header {
-    padding: 16px 0 20px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 32px;
+  :focus-visible {
+    outline: 2px solid var(--vodacom-red);
+    outline-offset: 3px;
   }
 
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--vodacom-red);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background: var(--vodacom-red);
+    display: inline-block;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .badge-red {
+    background: var(--vodacom-red);
+    color: #fff;
+  }
+  .badge-gold {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .badge-green {
+    background: var(--vodacom-green);
+    color: #fff;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(18, 22, 15, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--vodacom-red);
+  }
   .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 0;
   }
-
   .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 20px;
-    letter-spacing: -0.02em;
+    color: var(--paper);
   }
-  .logo .red {
-    color: var(--red);
+  .logo .vodacom {
+    color: var(--vodacom-red);
   }
-  .logo .gold {
+  .logo .tunzo {
     color: var(--gold);
   }
-
-  .nav a {
-    font-size: 13px;
-    color: var(--text-muted);
-    transition: color 0.2s;
+  .nav-links {
+    display: none;
+    gap: 24px;
+    list-style: none;
+    font-size: 13.5px;
     font-weight: 500;
   }
-  .nav a:hover {
-    color: var(--text);
+  .nav-links a {
+    color: var(--mist);
+    transition: color 0.15s;
+  }
+  .nav-links a:hover {
+    color: var(--paper);
+  }
+  .nav-cta {
+    display: none;
+    font-size: 13px;
+    padding: 8px 18px;
   }
 
-  /* ===== HERO ===== */
-  .hero {
-    text-align: center;
-    padding: 12px 0 28px;
+  @media(min-width: 768px) {
+    .nav-links {
+      display: flex;
+    }
+    .nav-cta {
+      display: inline-flex;
+    }
   }
 
-  .hero .badge {
-    display: inline-block;
-    background: var(--red);
-    color: #fff;
-    font-family: var(--font-mono);
-    font-size: 10px;
+  /* ---------- BUTTONS ---------- */
+  .btn {
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 3px 14px;
-    border-radius: 20px;
-    margin-bottom: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .btn-red {
+    background: var(--vodacom-red);
+    color: #fff;
+  }
+  .btn-red:hover {
+    background: var(--vodacom-red-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px rgba(226, 0, 26, 0.5);
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: #221604;
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px rgba(242, 169, 59, 0.5);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover {
+    border-color: var(--vodacom-red);
+    color: var(--vodacom-red);
+  }
+  .btn-full {
+    width: 100%;
+    justify-content: center;
   }
 
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(28px, 5vw, 44px);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.08;
+  /* ============================================================ */
+  /* 🎯 LANDING — HERO + VIFURUSHI                                */
+  /* ============================================================ */
+
+  .landing {
+    padding: 24px 0 40px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 600px 300px at 80% 0%, rgba(226, 0, 26, 0.10), transparent 60%),
+      radial-gradient(ellipse 400px 300px at 20% 100%, rgba(242, 169, 59, 0.08), transparent 60%);
   }
-  .hero h1 .gold {
+
+  /* ---- HERO HEADLINE ---- */
+  .landing-header {
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .landing-header .eyebrow {
+    justify-content: center;
+  }
+  .landing-header h1 {
+    font-size: clamp(26px, 4.8vw, 44px);
+    line-height: 1.08;
+    margin: 10px 0 6px;
+  }
+  .landing-header h1 .vodacom {
+    color: var(--vodacom-red);
+  }
+  .landing-header h1 .tunzo {
     color: var(--gold);
   }
-  .hero h1 .red {
-    color: var(--red);
+  .landing-header h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .landing-header p {
+    color: var(--mist);
+    font-size: 14.5px;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
-  .hero p {
-    color: var(--text-muted);
-    font-size: 15px;
-    max-width: 440px;
-    margin: 8px auto 0;
+  /* ---- Vodacom Badge ---- */
+  .vodacom-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(226, 0, 26, 0.12);
+    border: 1px solid rgba(226, 0, 26, 0.2);
+    border-radius: 30px;
+    padding: 4px 16px 4px 12px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--vodacom-red);
+    font-weight: 600;
+  }
+  .vodacom-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--vodacom-red);
+    display: inline-block;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(0.8);
+    }
   }
 
-  /* ===== PRIZE GRID ===== */
+  /* ---- QUICK STATS ---- */
+  .quick-stats {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .quick-stats .stat {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--mist);
+    text-align: center;
+  }
+  .quick-stats .stat b {
+    display: block;
+    font-size: 18px;
+    color: var(--paper);
+  }
+
+  /* ============================================================ */
+  /* 🎴 PRIZE CARDS — NEW CLEAN DESIGN                           */
+  /* ============================================================ */
+
+  .packages {
+    margin-top: 28px;
+  }
+
+  .packages-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .packages-header h2 {
+    font-size: clamp(18px, 2.8vw, 26px);
+  }
+  .packages-header h2 .vodacom {
+    color: var(--vodacom-red);
+  }
+  .packages-header .sub {
+    color: var(--mist);
+    font-size: 12.5px;
+  }
+
   .prize-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-top: 24px;
+    margin-top: 20px;
   }
 
   @media (min-width: 600px) {
     .prize-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
   }
 
-  /* ===== PRIZE CARD ===== */
+  @media (min-width: 900px) {
+    .prize-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
   .prize-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--card-radius);
     padding: 18px 14px 16px;
     text-align: center;
     transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
   }
 
   .prize-card:hover {
-    border-color: var(--border-hover);
+    border-color: var(--vodacom-red);
     transform: translateY(-3px);
     box-shadow: 0 12px 32px -12px rgba(226, 0, 26, 0.25);
-    background: var(--bg-card-hover);
+    background: var(--ink);
   }
 
-  /* Featured prize */
   .prize-card.featured {
-    border-color: var(--red);
+    border-color: var(--vodacom-red);
     border-width: 2px;
-    background: linear-gradient(145deg, #18100E, #0F0B0A);
+    background: linear-gradient(145deg, #1F1012, #150A0C);
   }
 
   .prize-card.featured .prize-amount {
     color: var(--gold);
   }
 
-  /* Prize emoji / icon */
   .prize-icon {
     font-size: 28px;
     margin-bottom: 4px;
   }
 
-  /* Prize label */
   .prize-label {
     font-family: var(--font-mono);
     font-size: 9px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--text-muted);
+    color: var(--mist);
     margin-bottom: 2px;
   }
 
-  /* Prize amount — BIG & BOLD */
   .prize-amount {
     font-family: var(--font-display);
     font-size: clamp(22px, 3vw, 30px);
@@ -221,28 +434,26 @@
   .prize-amount .currency {
     font-size: 14px;
     font-weight: 500;
-    color: var(--text-muted);
+    color: var(--mist);
     margin-right: 2px;
   }
 
-  /* Divider */
   .divider {
     width: 28px;
     height: 2px;
-    background: var(--border);
+    background: var(--line);
     margin: 8px 0 6px;
     border-radius: 2px;
     transition: background 0.25s;
   }
 
   .prize-card:hover .divider {
-    background: var(--red);
+    background: var(--vodacom-red);
   }
 
-  /* Unlock fee */
   .unlock-label {
     font-size: 10px;
-    color: var(--text-muted);
+    color: var(--mist);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -259,11 +470,10 @@
   .unlock-fee .currency {
     font-size: 11px;
     font-weight: 500;
-    color: var(--text-muted);
+    color: var(--mist);
     margin-right: 2px;
   }
 
-  /* Button */
   .btn-unlock {
     margin-top: 12px;
     width: 100%;
@@ -271,14 +481,14 @@
     font-size: 13px;
     font-weight: 600;
     border-radius: 8px;
-    background: var(--red);
+    background: var(--vodacom-red);
     color: #fff;
     transition: background 0.2s, transform 0.15s;
     font-family: var(--font-body);
   }
 
   .btn-unlock:hover {
-    background: var(--red-dark);
+    background: var(--vodacom-red-dark);
     transform: scale(1.02);
   }
 
@@ -291,12 +501,11 @@
     background: #E09A2A;
   }
 
-  /* Featured badge */
   .featured-badge {
     position: absolute;
     top: -1px;
     right: 14px;
-    background: var(--red);
+    background: var(--vodacom-red);
     color: #fff;
     font-family: var(--font-mono);
     font-size: 7px;
@@ -312,7 +521,7 @@
     color: #1A1508;
   }
 
-  /* ===== RESPONSIVE: SMALL PHONES ===== */
+  /* Mobile adjustments */
   @media (max-width: 420px) {
     .prize-grid {
       gap: 10px;
@@ -364,169 +573,408 @@
     }
   }
 
-  /* ===== FOOTER ===== */
-  footer {
-    margin-top: 40px;
-    padding: 24px 0 16px;
-    border-top: 1px solid var(--border);
+  .packages-footer {
     text-align: center;
+    margin-top: 20px;
+  }
+  .packages-footer .btn {
+    font-size: 13px;
   }
 
-  footer p {
-    font-size: 12px;
-    color: var(--text-muted);
+  /* ============================================================ */
+  /* 🎁 OTHER SECTIONS (unchanged)                               */
+  /* ============================================================ */
+
+  section {
+    padding: 40px 0;
+  }
+
+  .sec-head {
+    max-width: 600px;
+    margin-bottom: 28px;
+  }
+  .sec-head h2 {
+    font-size: clamp(20px, 2.8vw, 30px);
+    margin-top: 6px;
+  }
+  .sec-head h2 .vodacom {
+    color: var(--vodacom-red);
+  }
+  .sec-head p {
+    color: var(--mist);
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  /* ----- HOW IT WORKS ----- */
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  @media(max-width: 600px) {
+    .steps {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+  .step {
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .step .num {
+    font-family: var(--font-mono);
+    color: var(--vodacom-red);
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .step h3 {
+    font-size: 15px;
+    margin: 4px 0 4px;
+  }
+  .step p {
+    color: var(--mist);
+    font-size: 12.5px;
+    margin: 0;
+  }
+  .step .pay-number {
+    display: inline-block;
+    background: var(--vodacom-red);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 14px;
+    border-radius: 12px;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
     font-family: var(--font-mono);
   }
 
-  footer .highlight {
-    color: var(--gold);
+  /* ----- GIFTS SHOWCASE ----- */
+  .gifts-mini {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  @media(max-width: 600px) {
+    .gifts-mini {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .gift-mini {
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .gift-mini .icon {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+  .gift-mini h4 {
+    font-size: 13px;
+  }
+  .gift-mini p {
+    font-size: 11px;
+    color: var(--mist);
+    margin: 0;
   }
 
-  /* ===== MODAL ===== */
+  /* ----- TESTIMONIALS ----- */
+  .testi-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  @media(max-width: 700px) {
+    .testi-mini {
+      grid-template-columns: 1fr;
+    }
+  }
+  .testi-mini blockquote {
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0;
+    font-size: 13px;
+    color: #D9D5C4;
+  }
+  .testi-mini .who {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--mist);
+    margin-top: 8px;
+  }
+  .testi-mini .who b {
+    color: var(--paper);
+    font-family: var(--font-body);
+  }
+
+  /* ----- FAQ ----- */
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--paper);
+    text-align: left;
+    padding: 14px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-weight: 600;
+  }
+  .faq-q .plus {
+    font-family: var(--font-mono);
+    color: var(--vodacom-red);
+    transition: transform 0.2s;
+    font-size: 18px;
+  }
+  .faq-item.open .faq-q .plus {
+    transform: rotate(45deg);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .faq-a p {
+    color: var(--mist);
+    font-size: 13px;
+    padding: 0 4px 14px;
+    margin: 0;
+  }
+
+  /* ----- FOOTER ----- */
+  footer {
+    padding: 36px 0 20px;
+    border-top: 2px solid var(--vodacom-red);
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+  @media(max-width: 600px) {
+    .foot-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+  .foot-col h5 {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 8px;
+  }
+  .foot-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .foot-col a {
+    font-size: 13px;
+    color: #CFCBB8;
+    transition: color 0.15s;
+  }
+  .foot-col a:hover {
+    color: var(--vodacom-red);
+  }
+  .foot-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--mist);
+    font-family: var(--font-mono);
+  }
+  .disclaimer {
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 11.5px;
+    color: var(--mist);
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  /* ============================================================ */
+  /* 🔴 MODAL — VODACOM PAYMENT                                  */
+  /* ============================================================ */
+
   .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(9, 11, 7, 0.85);
+    backdrop-filter: blur(4px);
     display: none;
     align-items: center;
     justify-content: center;
     padding: 16px;
     z-index: 100;
   }
-
   .modal-overlay.active {
     display: flex;
   }
-
   .modal {
-    background: #181C15;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px 24px 24px;
-    max-width: 380px;
+    background: var(--paper);
+    color: var(--ink);
     width: 100%;
+    max-width: 400px;
+    border-radius: 16px;
+    padding: 24px 22px;
+    max-height: 90vh;
+    overflow-y: auto;
     position: relative;
   }
-
   .modal-close {
     position: absolute;
     top: 12px;
     right: 16px;
     background: none;
     border: none;
-    color: var(--text-muted);
     font-size: 22px;
-    cursor: pointer;
+    color: #7A755E;
     line-height: 1;
   }
-  .modal-close:hover {
-    color: #fff;
-  }
-
-  .modal .prize-name {
+  .modal h3 {
     font-family: var(--font-display);
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
     margin-bottom: 2px;
   }
-
-  .modal .prize-value {
+  .modal .modal-tier {
     font-family: var(--font-mono);
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--gold);
-    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--vodacom-red);
+    margin-bottom: 16px;
   }
 
-  .modal .divider-line {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    margin: 12px 0;
+  /* Payment hint */
+  .payment-hint {
+    background: var(--vodacom-red-light);
+    color: var(--vodacom-red-dark);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    margin-bottom: 14px;
+    font-family: var(--font-mono);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .payment-hint strong {
+    background: var(--vodacom-red);
+    color: #fff;
+    padding: 2px 12px;
+    border-radius: 4px;
+    font-size: 11px;
   }
 
-  .modal .pay-row {
+  /* Pay Box */
+  .pay-box {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-family: var(--font-mono);
+    border-left: 4px solid var(--vodacom-red);
+  }
+  .pay-box .row {
     display: flex;
     justify-content: space-between;
+    font-size: 12.5px;
     padding: 4px 0;
+    color: var(--mist);
+  }
+  .pay-box .row b {
+    color: var(--paper);
     font-size: 13px;
-    color: var(--text-muted);
   }
-
-  .modal .pay-row b {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .modal .pay-row .highlight {
-    color: var(--gold);
-    font-weight: 600;
-  }
-
-  .modal .pay-row .number {
-    color: #fff;
-    font-family: var(--font-mono);
-    font-size: 15px;
-    font-weight: 600;
+  .pay-box .till {
+    font-size: 20px;
+    color: var(--vodacom-red);
     letter-spacing: 0.04em;
+    font-weight: 700;
+  }
+  .pay-box .till-name {
+    color: var(--gold);
+    font-size: 13px;
+  }
+  .pay-box .highlight-amount {
+    color: var(--gold);
+    font-weight: 700;
   }
 
   .copy-btn {
-    width: 100%;
     margin-top: 8px;
-    padding: 8px 0;
-    background: var(--gold-dim);
-    border: 1px solid rgba(242, 169, 59, 0.2);
-    border-radius: 6px;
-    color: var(--gold);
+    width: 100%;
+    justify-content: center;
+    background: var(--vodacom-red);
+    color: #fff;
     font-size: 12px;
-    font-weight: 500;
-    transition: background 0.2s;
+    padding: 7px 12px;
+    border-radius: 6px;
   }
   .copy-btn:hover {
-    background: rgba(242, 169, 59, 0.2);
+    background: var(--vodacom-red-dark);
   }
 
   .field {
-    margin-top: 14px;
+    margin-bottom: 12px;
   }
-
   .field label {
     display: block;
     font-size: 12px;
-    font-weight: 500;
-    color: var(--text-muted);
+    font-weight: 600;
     margin-bottom: 4px;
+    color: #5B5646;
   }
-
   .field input {
     width: 100%;
     padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: #0B0D0A;
-    color: #fff;
+    border-radius: 6px;
+    border: 1px solid #D9CFA8;
+    background: #fff;
     font-size: 14px;
     font-family: var(--font-mono);
-    outline: none;
-    transition: border-color 0.2s;
   }
-
   .field input:focus {
-    border-color: var(--red);
+    outline: 2px solid var(--vodacom-red);
+    outline-offset: 1px;
   }
-
   .field .err {
-    color: var(--red);
+    color: var(--vodacom-red);
     font-size: 11px;
     margin-top: 4px;
     display: none;
   }
-
   .field.invalid input {
-    border-color: var(--red);
+    border-color: var(--vodacom-red);
   }
   .field.invalid .err {
     display: block;
@@ -534,64 +982,56 @@
 
   .confirm-btn {
     width: 100%;
-    margin-top: 14px;
-    padding: 11px 0;
-    border-radius: 8px;
-    background: var(--red);
+    justify-content: center;
+    background: var(--vodacom-red);
     color: #fff;
     font-size: 14px;
-    font-weight: 600;
-    transition: background 0.2s;
+    padding: 12px;
+    border-radius: 8px;
   }
   .confirm-btn:hover {
-    background: var(--red-dark);
+    background: var(--vodacom-red-dark);
   }
 
   .success-view {
     display: none;
     text-align: center;
+    padding: 4px 0;
   }
   .success-view.active {
     display: block;
   }
-
   .success-icon {
-    font-size: 40px;
-    margin-bottom: 6px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(226, 0, 26, 0.10);
+    color: var(--vodacom-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 12px;
   }
-
-  .success-view h3 {
-    font-family: var(--font-display);
-    font-size: 20px;
-    margin-bottom: 2px;
-  }
-
-  .success-view p {
-    color: var(--text-muted);
-    font-size: 13px;
-  }
-
   .receipt {
-    background: #0B0D0A;
+    background: var(--ink);
+    color: var(--paper);
     border-radius: 8px;
     padding: 14px 16px;
-    margin: 14px 0;
     text-align: left;
     font-family: var(--font-mono);
     font-size: 12px;
+    margin: 14px 0;
   }
-
   .receipt .row {
     display: flex;
     justify-content: space-between;
-    padding: 3px 0;
-    color: var(--text-muted);
+    padding: 4px 0;
+    color: var(--mist);
   }
   .receipt .row b {
-    color: var(--text);
-    font-weight: 500;
+    color: var(--paper);
   }
-
   .form-view {
     display: block;
   }
@@ -599,218 +1039,423 @@
     display: none;
   }
 
-  .modal .close-success-btn {
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 8px;
-    background: var(--gold);
-    color: #1A1508;
-    font-size: 14px;
-    font-weight: 600;
-  }
-  .modal .close-success-btn:hover {
-    background: #E09A2A;
-  }
-
-  /* ===== PAYMENT HINT INSIDE MODAL ===== */
-  .payment-hint {
-    background: rgba(226, 0, 26, 0.06);
-    border: 1px solid rgba(226, 0, 26, 0.12);
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-bottom: 14px;
+  .payment-method-badge {
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-
-  .payment-hint strong {
+    gap: 6px;
+    background: var(--vodacom-red);
     color: #fff;
-    font-family: var(--font-mono);
+    padding: 2px 14px 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
     font-weight: 600;
-    font-size: 13px;
+    font-family: var(--font-mono);
     letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    width: fit-content;
   }
 
-  .payment-hint .name {
+  .modal .prize-value-display {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
     color: var(--gold);
-    font-weight: 500;
+    margin-bottom: 4px;
   }
 </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header>
+  <!-- ======== HEADER ======== -->
+  <header class="site">
     <div class="wrap nav">
       <div class="logo">
-        <span class="red">Vodacom</span>
-        <span class="gold">Tunzo</span>
+        <span class="vodacom">Vodacom</span>
+        <span class="tunzo">Tunzo</span>
       </div>
-      <a href="#prizes">Zawadi</a>
+      <ul class="nav-links">
+        <li><a href="#jinsi">Jinsi</a></li>
+        <li><a href="#zawadi">Zawadi</a></li>
+        <li><a href="#maswali">Maswali</a></li>
+      </ul>
+      <a href="#packages" class="btn btn-red nav-cta">Zawadi</a>
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
+  <!-- ============================================================ -->
+  <!-- 🚀 LANDING — HERO + PRIZE CARDS                              -->
+  <!-- ============================================================ -->
+
+  <section class="landing" id="packages">
+
+    <!-- ---- HERO HEADLINE ---- -->
     <div class="wrap">
-      <span class="badge">🔓 Fungua Zawadi Yako</span>
-      <h1>
-        Lipia kidogo,<br>
-        <span class="gold">pata pesa</span> <span class="red">mara moja</span>
-      </h1>
-      <p>Chagua zawadi unayotaka, lipa ada ya kufungua, na pesa inakwenda moja kwa moja kwenye simu yako.</p>
+      <div class="landing-header">
+        <div class="eyebrow">Vodacom Tunzo · Tanzania</div>
+        <h1>
+          <span class="vodacom">Vodacom</span>
+          <span class="tunzo">Tunzo</span>
+          <br>
+          <em>Lipia kidogo,</em> pata pesa mara moja
+        </h1>
+        <p>Chagua zawadi unayotaka, lipa ada ya kufungua, na pesa inakwenda moja kwa moja kwenye simu yako.</p>
+
+        <div class="vodacom-badge">
+          <span class="dot"></span>
+          Vodacom Tunzo — Programu Rasmi
+        </div>
+
+        <div class="quick-stats">
+          <div class="stat"><b>6</b> Zawadi</div>
+          <div class="stat"><b>12,400+</b> Wanachama</div>
+          <div class="stat"><b>TZS 300K</b> Kiwango cha chini</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- PRIZE CARDS ---- -->
+    <div class="wrap">
+      <div class="packages">
+        <div class="packages-header">
+          <h2>🎯 <span class="vodacom">Vodacom</span> Tunzo — Zawadi Zako</h2>
+          <span class="sub">Lipia ada kidogo, pata zawadi kubwa</span>
+        </div>
+
+        <div class="prize-grid">
+
+          <!-- CARD 1: 300,000 -->
+          <div class="prize-card">
+            <div class="prize-icon">💵</div>
+            <div class="prize-label">Zawadi</div>
+            <div class="prize-amount">
+              <span class="currency">TZS</span> 300,000
+            </div>
+            <div class="divider"></div>
+            <div class="unlock-label">Ada ya Kufungua</div>
+            <div class="unlock-fee">
+              <span class="currency">TZS</span> 102,400
+            </div>
+            <button class="btn-unlock" onclick="openModal('300,000', '102,400', 'Fedha')">
+              🔓 Fungua Sasa
+            </button>
+          </div>
+
+          <!-- CARD 2: 600,000 -->
+          <div class="prize-card">
+            <div class="prize-icon">💵</div>
+            <div class="prize-label">Zawadi</div>
+            <div class="prize-amount">
+              <span class="currency">TZS</span> 600,000
+            </div>
+            <div class="divider"></div>
+            <div class="unlock-label">Ada ya Kufungua</div>
+            <div class="unlock-fee">
+              <span class="currency">TZS</span> 204,800
+            </div>
+            <button class="btn-unlock" onclick="openModal('600,000', '204,800', 'Dhahabu')">
+              🔓 Fungua Sasa
+            </button>
+          </div>
+
+          <!-- CARD 3: 1,200,000 — FEATURED -->
+          <div class="prize-card featured">
+            <span class="featured-badge">⭐ Maarufu</span>
+            <div class="prize-icon">💎</div>
+            <div class="prize-label">Zawadi</div>
+            <div class="prize-amount">
+              <span class="currency">TZS</span> 1,200,000
+            </div>
+            <div class="divider"></div>
+            <div class="unlock-label">Ada ya Kufungua</div>
+            <div class="unlock-fee">
+              <span class="currency">TZS</span> 409,600
+            </div>
+            <button class="btn-unlock" onclick="openModal('1,200,000', '409,600', 'Almasi')">
+              🔓 Fungua Sasa
+            </button>
+          </div>
+
+          <!-- CARD 4: 2,500,000 -->
+          <div class="prize-card">
+            <div class="prize-icon">👑</div>
+            <div class="prize-label">Zawadi</div>
+            <div class="prize-amount">
+              <span class="currency">TZS</span> 2,500,000
+            </div>
+            <div class="divider"></div>
+            <div class="unlock-label">Ada ya Kufungua</div>
+            <div class="unlock-fee">
+              <span class="currency">TZS</span> 853,333
+            </div>
+            <button class="btn-unlock" onclick="openModal('2,500,000', '853,333', 'Taji')">
+              🔓 Fungua Sasa
+            </button>
+          </div>
+
+          <!-- CARD 5: 5,000,000 -->
+          <div class="prize-card">
+            <div class="prize-icon">🏆</div>
+            <div class="prize-label">Zawadi</div>
+            <div class="prize-amount">
+              <span class="currency">TZS</span> 5,000,000
+            </div>
+            <div class="divider"></div>
+            <div class="unlock-label">Ada ya Kufungua</div>
+            <div class="unlock-fee">
+              <span class="currency">TZS</span> 1,706,667
+            </div>
+            <button class="btn-unlock" onclick="openModal('5,000,000', '1,706,667', 'Kifalme')">
+              🔓 Fungua Sasa
+            </button>
+          </div>
+
+          <!-- CARD 6: 10,000,000 — JACKPOT -->
+          <div class="prize-card featured">
+            <span class="featured-badge">👑 Jackpot</span>
+            <div class="prize-icon">💎</div>
+            <div class="prize-label">Zawadi</div>
+            <div class="prize-amount">
+              <span class="currency">TZS</span> 10,000,000
+            </div>
+            <div class="divider"></div>
+            <div class="unlock-label">Ada ya Kufungua</div>
+            <div class="unlock-fee">
+              <span class="currency">TZS</span> 3,413,333
+            </div>
+            <button class="btn-unlock" onclick="openModal('10,000,000', '3,413,333', 'Jackpot')">
+              🔓 Fungua Sasa
+            </button>
+          </div>
+
+        </div><!-- /prize-grid -->
+
+        <div class="packages-footer">
+          <a href="#zawadi" class="btn btn-ghost">🎁 Tazama Zawadi Zote →</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== PRIZE GRID ===== -->
-  <section class="wrap" id="prizes">
-    <div class="prize-grid">
+  <!-- ============================================================ -->
+  <!-- 📱 JINSI INAVYOFANYA KAZI                                    -->
+  <!-- ============================================================ -->
 
-      <!-- PRIZE 1 -->
-      <div class="prize-card">
-        <div class="prize-icon">💵</div>
-        <div class="prize-label">Zawadi</div>
-        <div class="prize-amount">
-          <span class="currency">TZS</span> 300,000
-        </div>
-        <div class="divider"></div>
-        <div class="unlock-label">Ada ya Kufungua</div>
-        <div class="unlock-fee">
-          <span class="currency">TZS</span> 102,400
-        </div>
-        <button class="btn-unlock" onclick="openModal('Fedha', '300,000', '102,400')">
-          🔓 Fungua Sasa
-        </button>
+  <section id="jinsi">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Mchakato</div>
+        <h2>Hatua 3 tu — anza leo</h2>
+        <p>Hakuna app. Tuma malipo kwenye namba ya <strong style="color:var(--vodacom-red);">Vodacom</strong> iliyoonyeshwa.</p>
       </div>
-
-      <!-- PRIZE 2 -->
-      <div class="prize-card">
-        <div class="prize-icon">💵</div>
-        <div class="prize-label">Zawadi</div>
-        <div class="prize-amount">
-          <span class="currency">TZS</span> 600,000
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Chagua zawadi</h3>
+          <p>Angalia zawadi zote na chagua unayotaka.</p>
         </div>
-        <div class="divider"></div>
-        <div class="unlock-label">Ada ya Kufungua</div>
-        <div class="unlock-fee">
-          <span class="currency">TZS</span> 204,800
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Tuma malipo</h3>
+          <p>Tuma ada ya kufungua kwenye namba ya Vodacom iliyoonyeshwa.</p>
+          <span class="pay-number">📱 0791 045 431</span>
         </div>
-        <button class="btn-unlock" onclick="openModal('Dhahabu', '600,000', '204,800')">
-          🔓 Fungua Sasa
-        </button>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Thibitisha na pata</h3>
+          <p>Weka namba yako ya simu, tunathibitisha, na zawadi yako inatumwa.</p>
+        </div>
       </div>
-
-      <!-- PRIZE 3 — FEATURED -->
-      <div class="prize-card featured">
-        <span class="featured-badge">⭐ Maarufu</span>
-        <div class="prize-icon">💎</div>
-        <div class="prize-label">Zawadi</div>
-        <div class="prize-amount">
-          <span class="currency">TZS</span> 1,200,000
-        </div>
-        <div class="divider"></div>
-        <div class="unlock-label">Ada ya Kufungua</div>
-        <div class="unlock-fee">
-          <span class="currency">TZS</span> 409,600
-        </div>
-        <button class="btn-unlock" onclick="openModal('Almasi', '1,200,000', '409,600')">
-          🔓 Fungua Sasa
-        </button>
-      </div>
-
-      <!-- PRIZE 4 -->
-      <div class="prize-card">
-        <div class="prize-icon">👑</div>
-        <div class="prize-label">Zawadi</div>
-        <div class="prize-amount">
-          <span class="currency">TZS</span> 2,500,000
-        </div>
-        <div class="divider"></div>
-        <div class="unlock-label">Ada ya Kufungua</div>
-        <div class="unlock-fee">
-          <span class="currency">TZS</span> 853,333
-        </div>
-        <button class="btn-unlock" onclick="openModal('Taji', '2,500,000', '853,333')">
-          🔓 Fungua Sasa
-        </button>
-      </div>
-
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ============================================================ -->
+  <!-- 🎁 ZAWADI SHOWCASE                                           -->
+  <!-- ============================================================ -->
+
+  <section id="zawadi" style="background:var(--ink-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Zawadi</div>
+        <h2>Baadhi ya zawadi unazoweza kushinda</h2>
+        <p>Zawadi hutofautiana kulingana na kifurushi chako.</p>
+      </div>
+      <div class="gifts-mini">
+        <div class="gift-mini">
+          <div class="icon">📱</div>
+          <h4>Simu Janja</h4>
+          <p>iPhone, Samsung na nyingine</p>
+        </div>
+        <div class="gift-mini">
+          <div class="icon">🏍️</div>
+          <h4>Pikipiki</h4>
+          <p>Zawadi kuu ya mwezi</p>
+        </div>
+        <div class="gift-mini">
+          <div class="icon">💵</div>
+          <h4>Fedha Taslimu</h4>
+          <p>Pesa moja kwa moja simu</p>
+        </div>
+        <div class="gift-mini">
+          <div class="icon">🧺</div>
+          <h4>Vifaa vya Nyumbani</h4>
+          <p>Jokofu, TV, na zaidi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 💬 TESTIMONIALS                                             -->
+  <!-- ============================================================ -->
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Washindi</div>
+        <h2>Wanachama wameshinda nini?</h2>
+      </div>
+      <div class="testi-mini">
+        <blockquote>
+          "Nililipa TZS 102,400 nikapata TZS 300,000. Malipo yalikuja ndani ya dakika."
+          <div class="who"><b>Asha M.</b> · Dar es Salaam <span class="badge badge-green" style="font-size:8px;padding:1px 8px;margin-left:6px;">Amelipwa</span></div>
+        </blockquote>
+        <blockquote>
+          "Nilishinda TZS 600,000 kwa kulipa TZS 204,800 tu. Imenisaidia sana!"
+          <div class="who"><b>Juma K.</b> · Mwanza <span class="badge badge-green" style="font-size:8px;padding:1px 8px;margin-left:6px;">Amelipwa</span></div>
+        </blockquote>
+        <blockquote>
+          "Nimepata TZS 1,200,000, malipo yalifika haraka sana."
+          <div class="who"><b>Neema R.</b> · Arusha <span class="badge badge-green" style="font-size:8px;padding:1px 8px;margin-left:6px;">Amelipwa</span></div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ❓ FAQ                                                      -->
+  <!-- ============================================================ -->
+
+  <section id="maswali" style="background:var(--ink-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Maswali</div>
+        <h2>Kila kitu unachohitaji kujua</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Malipo yanafanyika vipi? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Tuma kiasi cha ada ya kufungua kwenye namba ya Vodacom <strong>0791 045 431</strong> (Jina: Joseph). Baada ya malipo, thibitisha kwenye tovuti ili zawadi yako itumwe.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Zawadi inakuja haraka? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Ndiyo. Mara tu malipo yako yanapothibitishwa, zawadi inatumwa moja kwa moja kwenye namba yako ya simu.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Naweza kuchagua zawadi yoyote? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Ndiyo. Chagua zawadi unayotaka na ulipe ada ya kufungua iliyoonyeshwa kwenye kadi.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Je, ni salama? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Ndiyo. Programu hii inaungwa mkono na Vodacom na malipo yote yanathibitishwa kabla ya zawadi kutumwa.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 📌 FOOTER                                                   -->
+  <!-- ============================================================ -->
+
   <footer>
     <div class="wrap">
-      <p>
-        <span class="highlight">Vodacom Tunzo</span> &mdash; Lipia ada kidogo, pata zawadi kubwa.
-        <br>
-        Namba ya malipo: <strong style="color:#fff;">0791 045 431</strong> · Jina: <strong style="color:var(--gold);">Joseph</strong>
-      </p>
+      <div class="foot-grid">
+        <div class="foot-col">
+          <div class="logo">
+            <span class="vodacom">Vodacom</span>
+            <span class="tunzo">Tunzo</span>
+          </div>
+          <p style="margin-top:8px;font-size:13px;color:var(--mist);">Programu ya zawadi inayokupa fursa ya kupata pesa kwa kulipa ada kidogo. Malipo yanatumwa kwa namba ya Vodacom.</p>
+        </div>
+        <div class="foot-col">
+          <h5>Kiungo</h5>
+          <ul>
+            <li><a href="#packages">Zawadi</a></li>
+            <li><a href="#zawadi">Tunzo</a></li>
+            <li><a href="#jinsi">Jinsi</a></li>
+            <li><a href="#maswali">Maswali</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h5>Wasiliana</h5>
+          <ul>
+            <li><a href="tel:+255791045431">0791 045 431</a></li>
+            <li><a href="mailto:msaada@vodacomtunzo.co.tz">msaada@vodacomtunzo.co.tz</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>📌 Taarifa:</strong> Namba ya malipo ni <strong>0791 045 431</strong> (Jina: Joseph). Hakikisha unatuma kiasi sahihi cha ada ya kufungua. Baada ya malipo, thibitisha kwenye tovuti hii ili zawadi yako itumwe.
+      </div>
+
+      <div class="foot-bottom">
+        <span>© 2026 Vodacom Tunzo</span>
+        <span>Programu rasmi ya zawadi kwa Watanzania.</span>
+      </div>
     </div>
   </footer>
 
   <!-- ============================================================ -->
-  <!-- 🔴 MODAL                                                    -->
+  <!-- 🔴 MODAL — VODACOM PAYMENT                                  -->
   <!-- ============================================================ -->
 
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-close" onclick="closeModal()" aria-label="Funga">&times;</button>
 
       <div class="form-view" id="formView">
-        <div class="prize-name" id="modalPrizeName">Fedha</div>
-        <div class="prize-value" id="modalPrizeAmount">TZS 300,000</div>
+        <h3 id="modalTierName">Fedha</h3>
+        <div class="prize-value-display" id="modalPrizeAmount">TZS 300,000</div>
 
-        <div class="divider-line"></div>
+        <!-- Payment Method Badge -->
+        <div class="payment-method-badge">
+          📱 Vodacom
+        </div>
 
-        <!-- Payment hint -->
+        <!-- Payment Hint -->
         <div class="payment-hint">
-          💳 Tuma malipo kwa:
           <strong>0791 045 431</strong>
-          <span class="name">(Joseph)</span>
+          <span>Jina: Joseph</span>
         </div>
 
-        <!-- Payment details -->
-        <div class="pay-row">
-          <span>Ada ya Kufungua</span>
-          <b id="modalUnlockFee">TZS 102,400</b>
+        <div class="pay-box">
+          <div class="row"><span>Ada ya Kufungua</span><b id="payAmount">TZS 102,400</b></div>
+          <div class="row"><span>Unapata</span><b class="highlight-amount" id="modalYouGet">TZS 300,000</b></div>
+          <div class="row"><span>Maelezo (Reference)</span><b id="refCode">VT-XXXX</b></div>
+          <button class="btn copy-btn" onclick="copyTill()">📋 Nakili Namba</button>
         </div>
-        <div class="pay-row">
-          <span>Unapata</span>
-          <b class="highlight" id="modalYouGet">TZS 300,000</b>
-        </div>
-        <div class="pay-row">
-          <span>Maelezo (Reference)</span>
-          <b class="number" id="refCode">VT-XXXX</b>
-        </div>
-
-        <button class="copy-btn" onclick="copyNumber()">📋 Nakili Namba ya Malipo</button>
 
         <div class="field" id="phoneField">
           <label for="phoneInput">Namba yako ya simu</label>
           <input type="tel" id="phoneInput" placeholder="0712 345 678">
-          <div class="err">Weka namba sahihi ya Tanzania</div>
+          <div class="err">Weka namba sahihi ya Tanzania (mfano 0712345678)</div>
         </div>
 
-        <button class="confirm-btn" onclick="confirmPayment()">✅ Nimelipa — Thibitisha</button>
+        <button class="btn confirm-btn" onclick="confirmPayment()">✅ Nimelipa — Thibitisha</button>
       </div>
 
       <div class="success-view" id="successView">
         <div class="success-icon">✅</div>
         <h3>Umefanikiwa!</h3>
-        <p>Zawadi yako inatumwa sasa.</p>
+        <p style="color:#5B5646;font-size:13.5px;">Zawadi yako inatumwa sasa kwenye simu yako.</p>
         <div class="receipt">
-          <div class="row"><span>Zawadi</span><b id="rcptPrize">Fedha</b></div>
+          <div class="row"><span>Zawadi</span><b id="rcptTier">Fedha</b></div>
           <div class="row"><span>Kiasi</span><b id="rcptAmount">TZS 300,000</b></div>
           <div class="row"><span>Umelipa</span><b id="rcptPaid">TZS 102,400</b></div>
           <div class="row"><span>Namba yako</span><b id="rcptPhone">—</b></div>
           <div class="row"><span>Kitambulisho</span><b id="rcptId">—</b></div>
         </div>
-        <button class="close-success-btn" onclick="closeModal()">Funga</button>
+        <button class="btn btn-red" style="width:100%;justify-content:center;" onclick="closeModal()">Funga</button>
       </div>
     </div>
   </div>
@@ -820,9 +1465,24 @@
   <!-- ============================================================ -->
 
   <script>
+    // ---- FAQ accordion ----
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }
+
+    // ---- Payment modal ----
     const PAYMENT_NUMBER = "0791 045 431";
     const PAYMENT_NAME = "Joseph";
-
     let currentPrize = { name: '', amount: '', fee: '' };
     let currentRef = '';
 
@@ -830,21 +1490,24 @@
       return 'VT-' + Math.floor(10000 + Math.random() * 89999);
     }
 
-    function openModal(name, amount, fee) {
-      currentPrize = { name, amount, fee };
+    function openModal(prizeAmount, unlockFee, prizeName) {
+      currentPrize = {
+        name: prizeName,
+        amount: prizeAmount,
+        fee: unlockFee
+      };
       currentRef = generateRef();
 
-      document.getElementById('modalPrizeName').textContent = name;
-      document.getElementById('modalPrizeAmount').textContent = 'TZS ' + amount;
-      document.getElementById('modalUnlockFee').textContent = 'TZS ' + fee;
-      document.getElementById('modalYouGet').textContent = 'TZS ' + amount;
+      document.getElementById('modalTierName').textContent = prizeName;
+      document.getElementById('modalPrizeAmount').textContent = 'TZS ' + prizeAmount;
+      document.getElementById('payAmount').textContent = 'TZS ' + unlockFee;
+      document.getElementById('modalYouGet').textContent = 'TZS ' + prizeAmount;
       document.getElementById('refCode').textContent = currentRef;
 
       document.getElementById('formView').classList.remove('hidden');
       document.getElementById('successView').classList.remove('active');
       document.getElementById('phoneInput').value = '';
       document.getElementById('phoneField').classList.remove('invalid');
-
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -857,12 +1520,11 @@
     document.getElementById('modalOverlay').addEventListener('click', (e) => {
       if (e.target.id === 'modalOverlay') closeModal();
     });
-
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeModal();
     });
 
-    function copyNumber() {
+    function copyTill() {
       navigator.clipboard?.writeText(PAYMENT_NUMBER.replace(/\s/g, ''));
       const btn = document.querySelector('.copy-btn');
       const original = btn.textContent;
@@ -878,37 +1540,34 @@
     function confirmPayment() {
       const input = document.getElementById('phoneInput');
       const field = document.getElementById('phoneField');
-
       if (!isValidTzPhone(input.value)) {
         field.classList.add('invalid');
         input.focus();
         return;
       }
-
       field.classList.remove('invalid');
 
-      const id = 'VT-' + Math.floor(100000 + Math.random() * 899999);
-
-      // Store locally
+      const memberId = 'VT-' + Math.floor(100000 + Math.random() * 899999);
+      const record = {
+        id: memberId,
+        prize: currentPrize.name,
+        amount: currentPrize.amount,
+        fee: currentPrize.fee,
+        phone: input.value.trim(),
+        ref: currentRef,
+        date: new Date().toISOString()
+      };
       try {
-        const records = JSON.parse(localStorage.getItem('vodacom_tunzo_prizes') || '[]');
-        records.push({
-          id: id,
-          prize: currentPrize.name,
-          amount: currentPrize.amount,
-          fee: currentPrize.fee,
-          phone: input.value.trim(),
-          ref: currentRef,
-          date: new Date().toISOString()
-        });
-        localStorage.setItem('vodacom_tunzo_prizes', JSON.stringify(records));
-      } catch (e) {}
+        const existing = JSON.parse(localStorage.getItem('vodacom_tunzo_prizes') || '[]');
+        existing.push(record);
+        localStorage.setItem('vodacom_tunzo_prizes', JSON.stringify(existing));
+      } catch (e) { /* ignore */ }
 
-      document.getElementById('rcptPrize').textContent = currentPrize.name;
+      document.getElementById('rcptTier').textContent = currentPrize.name;
       document.getElementById('rcptAmount').textContent = 'TZS ' + currentPrize.amount;
       document.getElementById('rcptPaid').textContent = 'TZS ' + currentPrize.fee;
       document.getElementById('rcptPhone').textContent = input.value.trim();
-      document.getElementById('rcptId').textContent = id;
+      document.getElementById('rcptId').textContent = memberId;
 
       document.getElementById('formView').classList.add('hidden');
       document.getElementById('successView').classList.add('active');
