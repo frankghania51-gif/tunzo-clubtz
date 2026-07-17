@@ -3,1134 +3,1403 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TunzoClub — Jiunge, Lipia, Pata Tunzo</title>
+<title>TunzoClub — Vifurushi vya Uanachama</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#12160F;
-    --ink-soft:#1B211A;
-    --paper:#F6F1E4;
-    --paper-dim:#EAE3CF;
-    --gold:#F2A93B;
-    --gold-deep:#C9821F;
-    --green:#23A566;
-    --green-deep:#187848;
-    --maroon:#7C2A38;
-    --mist:#A9A48C;
-    --line:#33392F;
-    --font-display:'Space Grotesk', sans-serif;
-    --font-body:'Work Sans', sans-serif;
-    --font-mono:'IBM Plex Mono', monospace;
+  :root {
+    --ink: #12160F;
+    --ink-soft: #1B211A;
+    --paper: #F6F1E4;
+    --paper-dim: #EAE3CF;
+    --gold: #F2A93B;
+    --gold-deep: #C9821F;
+    --gold-glow: rgba(242, 169, 59, 0.25);
+    --green: #23A566;
+    --green-deep: #187848;
+    --maroon: #7C2A38;
+    --mist: #A9A48C;
+    --line: #33392F;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Work Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --card-radius: 16px;
   }
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--ink);
-    color:var(--paper);
-    font-family:var(--font-body);
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-  }
-  img,svg{display:block;max-width:100%;}
-  a{color:inherit;}
-  button{font-family:inherit;cursor:pointer;}
-
-  ::selection{background:var(--gold);color:var(--ink);}
-
-  :focus-visible{
-    outline:2px solid var(--gold);
-    outline-offset:3px;
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
-  .wrap{
-    max-width:1180px;
-    margin:0 auto;
-    padding:0 28px;
+  html {
+    scroll-behavior: smooth;
   }
 
-  h1,h2,h3,h4{
-    font-family:var(--font-display);
-    margin:0;
-    letter-spacing:-0.01em;
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .eyebrow{
-    font-family:var(--font-mono);
-    font-size:12.5px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--gold);
-    display:flex;
-    align-items:center;
-    gap:10px;
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
   }
-  .eyebrow::before{
-    content:'';
-    width:16px;height:2px;
-    background:var(--gold);
-    display:inline-block;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background: var(--gold);
+    display: inline-block;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .badge-gold {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .badge-green {
+    background: var(--green);
+    color: #fff;
+  }
+  .badge-maroon {
+    background: var(--maroon);
+    color: #fff;
   }
 
   /* ---------- NAV ---------- */
-  header.site{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:rgba(18,22,15,0.92);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(18, 22, 15, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
   }
-  .nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px 0;
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
   }
-  .logo{
-    display:flex;
-    align-items:baseline;
-    gap:2px;
-    font-family:var(--font-display);
-    font-weight:700;
-    font-size:21px;
-    color:var(--paper);
+  .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--paper);
   }
-  .logo span{color:var(--gold);}
-  .nav-links{
-    display:flex;
-    gap:30px;
-    list-style:none;
-    margin:0;
-    padding:0;
-    font-size:14.5px;
-    font-weight:500;
+  .logo span {
+    color: var(--gold);
   }
-  .nav-links a{
-    text-decoration:none;
-    color:var(--mist);
-    transition:color .15s;
+  .nav-links {
+    display: none;
+    gap: 24px;
+    list-style: none;
+    font-size: 13.5px;
+    font-weight: 500;
   }
-  .nav-links a:hover{color:var(--paper);}
-  .btn{
-    font-weight:600;
-    font-size:14.5px;
-    border-radius:3px;
-    border:none;
-    padding:11px 20px;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    text-decoration:none;
-    transition:transform .12s ease, box-shadow .12s ease;
+  .nav-links a {
+    color: var(--mist);
+    transition: color 0.15s;
   }
-  .btn-gold{
-    background:var(--gold);
-    color:#221604;
+  .nav-links a:hover {
+    color: var(--paper);
   }
-  .btn-gold:hover{transform:translateY(-1px);box-shadow:0 6px 18px -6px rgba(242,169,59,.6);}
-  .btn-ghost{
-    background:transparent;
-    color:var(--paper);
-    border:1px solid var(--line);
+  .nav-cta {
+    display: none;
+    font-size: 13px;
+    padding: 8px 18px;
   }
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
-  .nav-cta{display:none;}
-  @media(min-width:760px){.nav-cta{display:inline-flex;}}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    padding:64px 0 80px;
-    position:relative;
-    overflow:hidden;
-    border-bottom:1px solid var(--line);
+  @media(min-width: 768px) {
+    .nav-links {
+      display: flex;
+    }
+    .nav-cta {
+      display: inline-flex;
+    }
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: #221604;
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px rgba(242, 169, 59, 0.5);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .btn-green {
+    background: var(--green-deep);
+    color: #fff;
+  }
+  .btn-green:hover {
+    background: var(--green);
+    transform: translateY(-2px);
+  }
+  .btn-full {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ============================================================ */
+  /* 🎯 HERO + VIFURUSHI — COMBINED LANDING                      */
+  /* ============================================================ */
+
+  .landing {
+    padding: 32px 0 48px;
+    position: relative;
+    overflow: hidden;
     background:
-      radial-gradient(ellipse 700px 420px at 85% -10%, rgba(242,169,59,.16), transparent 60%),
-      radial-gradient(ellipse 500px 400px at -5% 90%, rgba(35,165,102,.14), transparent 60%);
-  }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:48px;
-    align-items:center;
-  }
-  @media(min-width:900px){
-    .hero-grid{grid-template-columns:1.1fr 0.9fr;}
-  }
-  .hero h1{
-    font-size:clamp(34px,5.4vw,54px);
-    line-height:1.05;
-    margin:18px 0 20px;
-  }
-  .hero h1 em{
-    font-style:normal;
-    color:var(--gold);
-  }
-  .hero p.lead{
-    font-size:17px;
-    color:var(--mist);
-    max-width:46ch;
-    margin-bottom:30px;
-  }
-  .hero-actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:14px;
-    margin-bottom:34px;
-  }
-  .trust-row{
-    display:flex;
-    gap:28px;
-    flex-wrap:wrap;
-    font-family:var(--font-mono);
-  }
-  .trust-row .stat b{
-    display:block;
-    font-size:22px;
-    color:var(--paper);
-  }
-  .trust-row .stat span{
-    font-size:11.5px;
-    color:var(--mist);
-    letter-spacing:.05em;
+      radial-gradient(ellipse 600px 300px at 80% 0%, rgba(242, 169, 59, 0.10), transparent 60%),
+      radial-gradient(ellipse 400px 300px at 20% 100%, rgba(35, 165, 102, 0.08), transparent 60%);
   }
 
-  /* ---------- USSD PHONE MOCK ---------- */
-  .phone{
-    justify-self:center;
-    width:270px;
-    background:#0B0E09;
-    border:8px solid #23281D;
-    border-radius:30px;
-    padding:18px 14px;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.03);
-    position:relative;
+  /* ---- HERO HEADLINE ---- */
+  .landing-header {
+    text-align: center;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
   }
-  .phone::before{
-    content:'';
-    position:absolute;
-    top:8px;left:50%;
-    transform:translateX(-50%);
-    width:50px;height:5px;
-    border-radius:4px;
-    background:#181C13;
+  .landing-header .eyebrow {
+    justify-content: center;
   }
-  .phone-screen{
-    background:#081007;
-    border-radius:10px;
-    padding:20px 16px 16px;
-    font-family:var(--font-mono);
-    min-height:280px;
-    margin-top:14px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    border:1px solid #1D2617;
+  .landing-header h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: 1.08;
+    margin: 12px 0 8px;
   }
-  .phone-screen .ussd-title{
-    font-size:11px;
-    color:var(--green);
-    letter-spacing:.08em;
-    margin-bottom:14px;
+  .landing-header h1 em {
+    font-style: normal;
+    color: var(--gold);
   }
-  .phone-screen .ussd-body{
-    font-size:13.5px;
-    color:#D6E9DA;
-    white-space:pre-line;
-    min-height:150px;
-  }
-  .phone-screen .ussd-cursor{
-    display:inline-block;
-    width:7px;height:14px;
-    background:var(--green);
-    vertical-align:middle;
-    animation:blink 1s steps(1) infinite;
-  }
-  @keyframes blink{50%{opacity:0;}}
-  .phone-screen .ussd-foot{
-    display:flex;
-    justify-content:space-between;
-    font-size:10.5px;
-    color:var(--mist);
-    border-top:1px solid #1D2617;
-    padding-top:10px;
-  }
-  @media (prefers-reduced-motion: reduce){
-    .ussd-cursor{animation:none;}
+  .landing-header p {
+    color: var(--mist);
+    font-size: 15px;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
-  /* ---------- SECTION HEADERS ---------- */
-  section{padding:84px 0;}
-  .sec-head{
-    max-width:640px;
-    margin-bottom:52px;
+  /* ---- QUICK STATS ---- */
+  .quick-stats {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
   }
-  .sec-head h2{
-    font-size:clamp(26px,3.6vw,38px);
-    margin-top:14px;
+  .quick-stats .stat {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--mist);
+    text-align: center;
   }
-  .sec-head p{
-    color:var(--mist);
-    margin-top:14px;
-    font-size:15.5px;
-  }
-
-  /* ---------- HOW IT WORKS ---------- */
-  .steps{
-    display:grid;
-    gap:0;
-    grid-template-columns:1fr;
-    border-top:1px solid var(--line);
-  }
-  @media(min-width:800px){.steps{grid-template-columns:repeat(3,1fr);}}
-  .step{
-    padding:28px 26px 30px;
-    border-bottom:1px solid var(--line);
-    border-right:1px solid var(--line);
-  }
-  @media(min-width:800px){
-    .step:last-child{border-right:none;}
-  }
-  .step .num{
-    font-family:var(--font-mono);
-    color:var(--gold);
-    font-size:13px;
-    margin-bottom:16px;
-  }
-  .step h3{
-    font-size:19px;
-    margin-bottom:10px;
-  }
-  .step p{
-    color:var(--mist);
-    font-size:14.5px;
-    margin:0;
+  .quick-stats .stat b {
+    display: block;
+    font-size: 18px;
+    color: var(--paper);
   }
 
-  /* ---------- TIERS (TICKETS) ---------- */
-  .tiers{
-    background:var(--paper);
-    color:var(--ink);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
-  .tiers .eyebrow{color:var(--gold-deep);}
-  .tiers .sec-head p{color:#5B5646;}
-  .tier-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:26px;
-  }
-  @media(min-width:680px){.tier-grid{grid-template-columns:1fr 1fr;}}
-  @media(min-width:1080px){.tier-grid{grid-template-columns:repeat(4,1fr);}}
+  /* ============================================================ */
+  /* 🎴 VIFURUSHI CARDS — MAIN FOCUS                            */
+  /* ============================================================ */
 
-  .ticket{
-    position:relative;
-    background:#fff;
-    border-radius:8px;
-    box-shadow:0 14px 30px -18px rgba(20,15,5,.35);
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-    border:1px solid #E4DCC4;
-  }
-  .ticket-top{
-    padding:24px 22px 20px;
-    flex:1;
-  }
-  .ticket-tier{
-    font-family:var(--font-mono);
-    font-size:11.5px;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--gold-deep);
-    margin-bottom:10px;
-  }
-  .ticket-name{
-    font-family:var(--font-display);
-    font-size:24px;
-    font-weight:700;
-    margin-bottom:6px;
-  }
-  .ticket-price{
-    font-family:var(--font-mono);
-    font-size:15px;
-    color:#3A3626;
-    margin-bottom:18px;
-  }
-  .ticket-price b{font-size:19px;}
-  .ticket ul{
-    list-style:none;
-    padding:0;margin:0;
-    display:flex;flex-direction:column;gap:9px;
-  }
-  .ticket li{
-    font-size:13.5px;
-    color:#413D2E;
-    display:flex;
-    gap:8px;
-    align-items:flex-start;
-  }
-  .ticket li::before{
-    content:'✓';
-    color:var(--green-deep);
-    font-weight:700;
-    flex:none;
-  }
-  .perforation{
-    position:relative;
-    height:0;
-    border-top:2px dashed #D9CFA8;
-    margin:0 0;
-  }
-  .perforation::before,.perforation::after{
-    content:'';
-    position:absolute;
-    top:-9px;
-    width:18px;height:18px;
-    border-radius:50%;
-    background:var(--paper);
-    border:1px solid #E4DCC4;
-  }
-  .perforation::before{left:-9px;}
-  .perforation::after{right:-9px;}
-  .ticket-stub{
-    padding:18px 22px 22px;
-    background:var(--ink);
-    color:var(--paper);
-  }
-  .ticket-stub .stub-label{
-    font-family:var(--font-mono);
-    font-size:10.5px;
-    color:var(--mist);
-    letter-spacing:.08em;
-    margin-bottom:10px;
-  }
-  .ticket .join-btn{
-    width:100%;
-    justify-content:center;
-    font-size:14px;
-  }
-  .ticket.featured{
-    border:2px solid var(--maroon);
-    transform:translateY(-6px);
-  }
-  .ticket.featured .ticket-stub{background:var(--maroon);}
-  .featured-flag{
-    position:absolute;
-    top:14px;right:-34px;
-    background:var(--maroon);
-    color:#fff;
-    font-family:var(--font-mono);
-    font-size:10.5px;
-    letter-spacing:.08em;
-    padding:4px 40px;
-    transform:rotate(38deg);
+  .packages {
+    margin-top: 32px;
   }
 
-  /* ---------- GIFTS SHOWCASE ---------- */
-  .gifts-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
+  .packages-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
-  @media(min-width:760px){.gifts-grid{grid-template-columns:repeat(4,1fr);}}
-  .gift-card{
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:22px 18px;
-    background:var(--ink-soft);
-    transition:border-color .15s, transform .15s;
+  .packages-header h2 {
+    font-size: clamp(20px, 3vw, 28px);
   }
-  .gift-card:hover{border-color:var(--gold);transform:translateY(-3px);}
-  .gift-icon{
-    width:46px;height:46px;
-    border-radius:50%;
-    background:rgba(242,169,59,.12);
-    display:flex;align-items:center;justify-content:center;
-    font-size:22px;
-    margin-bottom:16px;
-  }
-  .gift-card h4{font-size:16px;margin-bottom:6px;}
-  .gift-card p{font-size:13px;color:var(--mist);margin:0;}
-
-  /* ---------- TESTIMONIALS ---------- */
-  .testi-strip{
-    background:var(--ink-soft);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
-  .testi-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:22px;
-  }
-  @media(min-width:800px){.testi-grid{grid-template-columns:repeat(3,1fr);}}
-  .testi{
-    background:var(--ink);
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:24px;
-  }
-  .testi p{
-    font-size:14.5px;
-    color:#D9D5C4;
-    margin-bottom:18px;
-  }
-  .testi-who{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-family:var(--font-mono);
-    font-size:12px;
-    color:var(--mist);
-  }
-  .testi-who b{color:var(--paper);font-family:var(--font-body);font-size:13.5px;}
-  .paid-badge{
-    background:rgba(35,165,102,.15);
-    color:var(--green);
-    font-size:10.5px;
-    padding:2px 8px;
-    border-radius:20px;
-    margin-left:auto;
+  .packages-header .sub {
+    color: var(--mist);
+    font-size: 13px;
   }
 
-  /* ---------- FAQ ---------- */
-  .faq-list{
-    border-top:1px solid var(--line);
-  }
-  .faq-item{
-    border-bottom:1px solid var(--line);
-  }
-  .faq-q{
-    width:100%;
-    background:none;
-    border:none;
-    color:var(--paper);
-    text-align:left;
-    padding:22px 4px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-family:var(--font-display);
-    font-size:16.5px;
-    font-weight:600;
-  }
-  .faq-q .plus{
-    font-family:var(--font-mono);
-    color:var(--gold);
-    transition:transform .2s;
-    font-size:20px;
-  }
-  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
-  .faq-a{
-    max-height:0;
-    overflow:hidden;
-    transition:max-height .25s ease;
-  }
-  .faq-a p{
-    color:var(--mist);
-    font-size:14.5px;
-    padding:0 4px 22px;
-    margin:0;
-    max-width:70ch;
+  /* ----- CARD GRID (MOBILE-FIRST) ----- */
+  .package-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
-  /* ---------- FOOTER ---------- */
-  footer{
-    padding:60px 0 34px;
-    border-top:1px solid var(--line);
-  }
-  .foot-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:34px;
-    margin-bottom:40px;
-  }
-  @media(min-width:760px){.foot-grid{grid-template-columns:1.3fr 1fr 1fr;}}
-  .foot-grid p{color:var(--mist);font-size:13.5px;max-width:38ch;}
-  .foot-col h5{
-    font-family:var(--font-mono);
-    font-size:11.5px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--mist);
-    margin-bottom:14px;
-  }
-  .foot-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;}
-  .foot-col a{font-size:14px;text-decoration:none;color:#CFCBB8;}
-  .foot-col a:hover{color:var(--gold);}
-  .foot-bottom{
-    display:flex;
-    flex-wrap:wrap;
-    gap:14px;
-    justify-content:space-between;
-    align-items:center;
-    padding-top:24px;
-    border-top:1px solid var(--line);
-    font-size:12.5px;
-    color:var(--mist);
-    font-family:var(--font-mono);
-  }
-  .disclaimer{
-    background:var(--ink-soft);
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:16px 18px;
-    font-size:12.5px;
-    color:var(--mist);
-    margin-top:30px;
-    line-height:1.6;
+  @media(min-width: 500px) {
+    .package-grid {
+      gap: 16px;
+    }
   }
 
-  /* ---------- MODAL ---------- */
-  .modal-overlay{
-    position:fixed;inset:0;
-    background:rgba(9,11,7,.72);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    z-index:100;
+  @media(min-width: 768px) {
+    .package-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
   }
-  .modal-overlay.active{display:flex;}
-  .modal{
-    background:var(--paper);
-    color:var(--ink);
-    width:100%;
-    max-width:420px;
-    border-radius:10px;
-    padding:28px 26px 24px;
-    max-height:90vh;
-    overflow-y:auto;
-    position:relative;
-  }
-  .modal-close{
-    position:absolute;
-    top:14px;right:14px;
-    background:none;border:none;
-    font-size:20px;
-    color:#7A755E;
-    line-height:1;
-  }
-  .modal h3{font-family:var(--font-display);font-size:21px;margin-bottom:4px;}
-  .modal .modal-tier{font-family:var(--font-mono);font-size:12.5px;color:var(--gold-deep);margin-bottom:18px;}
-  .pay-box{
-    background:var(--ink);
-    color:var(--paper);
-    border-radius:8px;
-    padding:16px 18px;
-    margin-bottom:18px;
-    font-family:var(--font-mono);
-  }
-  .pay-box .row{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;color:var(--mist);}
-  .pay-box .row b{color:var(--paper);font-size:14px;}
-  .pay-box .till{
-    font-size:22px;
-    color:var(--gold);
-    letter-spacing:.04em;
-  }
-  .copy-btn{
-    margin-top:10px;
-    width:100%;
-    justify-content:center;
-    background:var(--gold);
-    color:#221604;
-    font-size:13px;
-    padding:8px 14px;
-  }
-  .field{margin-bottom:14px;}
-  .field label{
-    display:block;
-    font-size:12.5px;
-    font-weight:600;
-    margin-bottom:6px;
-    color:#5B5646;
-  }
-  .field input{
-    width:100%;
-    padding:11px 12px;
-    border-radius:5px;
-    border:1px solid #D9CFA8;
-    background:#fff;
-    font-size:14.5px;
-    font-family:var(--font-mono);
-  }
-  .field input:focus{outline:2px solid var(--gold);outline-offset:1px;}
-  .field .err{color:var(--maroon);font-size:12px;margin-top:5px;display:none;}
-  .field.invalid input{border-color:var(--maroon);}
-  .field.invalid .err{display:block;}
-  .confirm-btn{width:100%;justify-content:center;background:var(--green-deep);color:#fff;font-size:15px;padding:13px;}
-  .confirm-btn:hover{background:var(--green);}
 
-  .success-view{display:none;text-align:center;padding:6px 0 4px;}
-  .success-view.active{display:block;}
-  .success-icon{
-    width:56px;height:56px;
-    border-radius:50%;
-    background:rgba(35,165,102,.15);
-    color:var(--green-deep);
-    display:flex;align-items:center;justify-content:center;
-    font-size:26px;
-    margin:0 auto 16px;
+  /* ----- INDIVIDUAL CARD ----- */
+  .package-card {
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--card-radius);
+    padding: 16px 14px 18px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
   }
-  .receipt{
-    background:var(--ink);
-    color:var(--paper);
-    border-radius:8px;
-    padding:16px 18px;
-    text-align:left;
-    font-family:var(--font-mono);
-    font-size:12.5px;
-    margin:18px 0;
+
+  .package-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.6);
   }
-  .receipt .row{display:flex;justify-content:space-between;padding:5px 0;color:var(--mist);}
-  .receipt .row b{color:var(--paper);}
 
-  .form-view{display:block;}
-  .form-view.hidden{display:none;}
+  /* Featured card — Almasi */
+  .package-card.featured {
+    border-color: var(--maroon);
+    background: linear-gradient(145deg, #1F1718, #151011);
+  }
+  .package-card.featured::before {
+    content: '⭐ MAARUFU';
+    position: absolute;
+    top: 10px;
+    right: -28px;
+    background: var(--maroon);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 3px 36px;
+    transform: rotate(38deg);
+    text-transform: uppercase;
+  }
 
-  @media (max-width:480px){
-    .featured-flag{display:none;}
+  /* Card header */
+  .package-card .tier-badge {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+  .package-card .tier-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .package-card .tier-price {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--mist);
+    margin: 2px 0 10px;
+  }
+  .package-card .tier-price b {
+    font-size: 17px;
+    color: var(--paper);
+  }
+
+  /* Surprise preview — the "what you can win" mini list */
+  .package-card .surprise-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 8px 0 12px;
+  }
+  .package-card .surprise-preview .prize-tag {
+    background: rgba(242, 169, 59, 0.10);
+    border: 1px solid rgba(242, 169, 59, 0.15);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .package-card .surprise-preview .prize-tag .emoji {
+    font-size: 12px;
+  }
+
+  /* Benefits list — compact */
+  .package-card .benefits {
+    list-style: none;
+    margin: 6px 0 14px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .package-card .benefits li {
+    font-size: 12px;
+    color: var(--mist);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .package-card .benefits li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  /* CTA button on card */
+  .package-card .card-btn {
+    margin-top: auto;
+    font-size: 12.5px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    justify-content: center;
+    width: 100%;
+    font-weight: 600;
+  }
+  .package-card .card-btn.btn-gold {
+    background: var(--gold);
+    color: #221604;
+  }
+  .package-card .card-btn.btn-gold:hover {
+    box-shadow: 0 4px 16px -4px rgba(242, 169, 59, 0.4);
+  }
+
+  /* Special card: Taji gets a glow */
+  .package-card.taji {
+    border-color: rgba(242, 169, 59, 0.25);
+    background: linear-gradient(145deg, #1D1A12, #14120C);
+  }
+  .package-card.taji .tier-name {
+    color: var(--gold);
+  }
+
+  /* ============================================================ */
+  /* 📱 MOBILE ADJUSTMENTS                                       */
+  /* ============================================================ */
+
+  @media(max-width: 420px) {
+    .package-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .package-card {
+      padding: 12px 10px 14px;
+    }
+    .package-card .tier-name {
+      font-size: 15px;
+    }
+    .package-card .tier-price b {
+      font-size: 14px;
+    }
+    .package-card .benefits li {
+      font-size: 10.5px;
+    }
+    .package-card .surprise-preview .prize-tag {
+      font-size: 8.5px;
+      padding: 1px 8px;
+    }
+    .package-card .card-btn {
+      font-size: 11px;
+      padding: 7px 10px;
+    }
+    .package-card.featured::before {
+      font-size: 7px;
+      padding: 2px 30px;
+      top: 8px;
+      right: -24px;
+    }
+    .quick-stats .stat b {
+      font-size: 15px;
+    }
+    .quick-stats .stat {
+      font-size: 10px;
+    }
+  }
+
+  @media(max-width: 360px) {
+    .package-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .package-card {
+      padding: 10px 8px 12px;
+      border-radius: 12px;
+    }
+    .package-card .tier-name {
+      font-size: 13px;
+    }
+    .package-card .tier-price {
+      font-size: 11px;
+    }
+    .package-card .tier-price b {
+      font-size: 12px;
+    }
+    .package-card .benefits li {
+      font-size: 9.5px;
+    }
+    .package-card .benefits {
+      gap: 2px;
+    }
+    .package-card .surprise-preview .prize-tag {
+      font-size: 7.5px;
+      padding: 1px 6px;
+    }
+  }
+
+  /* ---- "VIEW ALL GIFTS" CTA ---- */
+  .packages-footer {
+    text-align: center;
+    margin-top: 24px;
+  }
+  .packages-footer .btn {
+    font-size: 13px;
+  }
+
+  /* ============================================================ */
+  /* 🎁 OTHER SECTIONS (compact)                                */
+  /* ============================================================ */
+
+  section {
+    padding: 48px 0;
+  }
+
+  .sec-head {
+    max-width: 600px;
+    margin-bottom: 32px;
+  }
+  .sec-head h2 {
+    font-size: clamp(22px, 3vw, 32px);
+    margin-top: 8px;
+  }
+  .sec-head p {
+    color: var(--mist);
+    margin-top: 8px;
+    font-size: 14.5px;
+  }
+
+  /* ----- HOW IT WORKS (simplified) ----- */
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  @media(max-width: 600px) {
+    .steps {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+  .step {
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .step .num {
+    font-family: var(--font-mono);
+    color: var(--gold);
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .step h3 {
+    font-size: 15px;
+    margin: 4px 0 4px;
+  }
+  .step p {
+    color: var(--mist);
+    font-size: 12.5px;
+    margin: 0;
+  }
+
+  /* ----- GIFTS SHOWCASE (mini) ----- */
+  .gifts-mini {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  @media(max-width: 600px) {
+    .gifts-mini {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .gift-mini {
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .gift-mini .icon {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+  .gift-mini h4 {
+    font-size: 13px;
+  }
+  .gift-mini p {
+    font-size: 11px;
+    color: var(--mist);
+    margin: 0;
+  }
+
+  /* ----- TESTIMONIALS (compact) ----- */
+  .testi-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  @media(max-width: 700px) {
+    .testi-mini {
+      grid-template-columns: 1fr;
+    }
+  }
+  .testi-mini blockquote {
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0;
+    font-size: 13px;
+    color: #D9D5C4;
+  }
+  .testi-mini .who {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--mist);
+    margin-top: 8px;
+  }
+  .testi-mini .who b {
+    color: var(--paper);
+    font-family: var(--font-body);
+  }
+
+  /* ----- FAQ (compact) ----- */
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--paper);
+    text-align: left;
+    padding: 16px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .faq-q .plus {
+    font-family: var(--font-mono);
+    color: var(--gold);
+    transition: transform 0.2s;
+    font-size: 18px;
+  }
+  .faq-item.open .faq-q .plus {
+    transform: rotate(45deg);
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .faq-a p {
+    color: var(--mist);
+    font-size: 13.5px;
+    padding: 0 4px 16px;
+    margin: 0;
+  }
+
+  /* ----- FOOTER ----- */
+  footer {
+    padding: 40px 0 24px;
+    border-top: 1px solid var(--line);
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  @media(max-width: 600px) {
+    .foot-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+  .foot-col h5 {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 8px;
+  }
+  .foot-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .foot-col a {
+    font-size: 13px;
+    color: #CFCBB8;
+    transition: color 0.15s;
+  }
+  .foot-col a:hover {
+    color: var(--gold);
+  }
+  .foot-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--mist);
+    font-family: var(--font-mono);
+  }
+  .disclaimer {
+    background: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 11.5px;
+    color: var(--mist);
+    margin-top: 20px;
+    line-height: 1.6;
+  }
+
+  /* ============================================================ */
+  /* 🟡 MODAL (same as before, kept consistent)                  */
+  /* ============================================================ */
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(9, 11, 7, 0.8);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 100;
+  }
+  .modal-overlay.active {
+    display: flex;
+  }
+  .modal {
+    background: var(--paper);
+    color: var(--ink);
+    width: 100%;
+    max-width: 400px;
+    border-radius: 16px;
+    padding: 24px 22px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #7A755E;
+    line-height: 1;
+  }
+  .modal h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    margin-bottom: 2px;
+  }
+  .modal .modal-tier {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--gold-deep);
+    margin-bottom: 16px;
+  }
+  .pay-box {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    font-family: var(--font-mono);
+  }
+  .pay-box .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12.5px;
+    padding: 4px 0;
+    color: var(--mist);
+  }
+  .pay-box .row b {
+    color: var(--paper);
+    font-size: 13px;
+  }
+  .pay-box .till {
+    font-size: 20px;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+  .copy-btn {
+    margin-top: 8px;
+    width: 100%;
+    justify-content: center;
+    background: var(--gold);
+    color: #221604;
+    font-size: 12px;
+    padding: 7px 12px;
+    border-radius: 6px;
+  }
+  .field {
+    margin-bottom: 12px;
+  }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #5B5646;
+  }
+  .field input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #D9CFA8;
+    background: #fff;
+    font-size: 14px;
+    font-family: var(--font-mono);
+  }
+  .field input:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+  .field .err {
+    color: var(--maroon);
+    font-size: 11px;
+    margin-top: 4px;
+    display: none;
+  }
+  .field.invalid input {
+    border-color: var(--maroon);
+  }
+  .field.invalid .err {
+    display: block;
+  }
+  .confirm-btn {
+    width: 100%;
+    justify-content: center;
+    background: var(--green-deep);
+    color: #fff;
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  .confirm-btn:hover {
+    background: var(--green);
+  }
+  .success-view {
+    display: none;
+    text-align: center;
+    padding: 4px 0;
+  }
+  .success-view.active {
+    display: block;
+  }
+  .success-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(35, 165, 102, 0.15);
+    color: var(--green-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 12px;
+  }
+  .receipt {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    margin: 14px 0;
+  }
+  .receipt .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    color: var(--mist);
+  }
+  .receipt .row b {
+    color: var(--paper);
+  }
+  .form-view {
+    display: block;
+  }
+  .form-view.hidden {
+    display: none;
   }
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="wrap nav">
-    <div class="logo">Tunzo<span>Club</span></div>
-    <ul class="nav-links">
-      <li><a href="#zawadi">Zawadi</a></li>
-      <li><a href="#jinsi">Jinsi Inavyofanya Kazi</a></li>
-      <li><a href="#tunzo">Vifurushi</a></li>
-      <li><a href="#maswali">Maswali</a></li>
-    </ul>
-    <a href="#tunzo" class="btn btn-gold nav-cta">Jiunge Sasa</a>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow">Kwa Wana-Tanzania Pekee</div>
-      <h1>Jiunge leo, lipia mara moja, <em>pata tunzo</em> kila mwezi.</h1>
-      <p class="lead">TunzoClub ni kilabu cha wanachama kinachokupa punguzo halisi, zawadi za robo mwaka, na nafasi ya bahati nasibu — moja kwa moja kupitia pesa ya simu.</p>
-      <div class="hero-actions">
-        <a href="#tunzo" class="btn btn-gold">Angalia Vifurushi</a>
-        <a href="#jinsi" class="btn btn-ghost">Jinsi Inavyofanya Kazi</a>
-      </div>
-      <div class="trust-row">
-        <div class="stat"><b>4</b><span>VIFURUSHI VYA UANACHAMA</span></div>
-        <div class="stat"><b>12,400+</b><span>WANACHAMA HAI</span></div>
-        <div class="stat"><b>TZS 300K</b><span>KIWANGO CHA CHINI</span></div>
-      </div>
+  <!-- ======== HEADER ======== -->
+  <header class="site">
+    <div class="wrap nav">
+      <div class="logo">Tunzo<span>Club</span></div>
+      <ul class="nav-links">
+        <li><a href="#jinsi">Jinsi</a></li>
+        <li><a href="#zawadi">Zawadi</a></li>
+        <li><a href="#maswali">Maswali</a></li>
+      </ul>
+      <a href="#packages" class="btn btn-gold nav-cta">Vifurushi</a>
     </div>
+  </header>
 
-    <div class="phone" aria-hidden="true">
-      <div class="phone-screen">
-        <div>
-          <div class="ussd-title">*150*00#</div>
-          <div class="ussd-body" id="ussdBody">Chagua huduma:
-1. Lipia Bili
-2. Tuma Pesa
-3. TunzoClub<span class="ussd-cursor"></span></div>
+  <!-- ============================================================ -->
+  <!-- 🚀 LANDING — HERO + VIFURUSHI IMMEDIATELY VISIBLE           -->
+  <!-- ============================================================ -->
+
+  <section class="landing" id="packages">
+
+    <!-- ---- HERO HEADLINE ---- -->
+    <div class="wrap">
+      <div class="landing-header">
+        <div class="eyebrow">TunzoClub · Tanzania</div>
+        <h1>Chagua kifurushi chako, <em>anza kushinda</em> zawadi</h1>
+        <p>Pata punguzo, bahati nasibu, na zawadi halisi — moja kwa moja kupitia pesa ya simu.</p>
+
+        <div class="quick-stats">
+          <div class="stat"><b>4</b> Vifurushi</div>
+          <div class="stat"><b>12,400+</b> Wanachama</div>
+          <div class="stat"><b>TZS 300K</b> Kiwango cha chini</div>
         </div>
-        <div class="ussd-foot"><span>TIGO / AIRTEL / HALOTEL</span><span>WEKA</span></div>
       </div>
     </div>
-  </div>
-</section>
 
-<section id="jinsi">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Mchakato</div>
-      <h2>Hatua tatu tu, moja kwa moja kwenye simu yako.</h2>
-      <p>Hakuna app ya kupakua. Kila kitu kinafanyika kupitia namba ya biashara ya pesa ya simu.</p>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="steps">
-      <div class="step">
-        <div class="num">01</div>
-        <h3>Chagua kifurushi</h3>
-        <p>Angalia vifurushi vinne vya uanachama na chagua kinachokufaa kulingana na punguzo unayotaka.</p>
+    <!-- ---- VIFURUSHI CARDS ---- -->
+    <div class="wrap">
+      <div class="packages">
+        <div class="packages-header">
+          <h2>📦 Vifurushi vya Uanachama</h2>
+          <span class="sub">Chagua na uanze kupata tunzo</span>
+        </div>
+
+        <div class="package-grid">
+
+          <!-- CARD 1: FEDHA -->
+          <div class="package-card">
+            <div class="tier-badge">Kifurushi 01</div>
+            <div class="tier-name">Fedha</div>
+            <div class="tier-price">TZS <b>300,000</b> / mwaka</div>
+
+            <div class="surprise-preview">
+              <span class="prize-tag"><span class="emoji">🎟️</span> 1 Bahati Nasibu</span>
+              <span class="prize-tag"><span class="emoji">💰</span> 10% Punguzo</span>
+            </div>
+
+            <ul class="benefits">
+              <li>Nafasi 1 ya bahati nasibu kila mwezi</li>
+              <li>Arifa za matoleo kwa SMS</li>
+            </ul>
+
+            <button class="btn card-btn btn-gold" onclick="openModal('Fedha','300,000')">
+              Jiunge Sasa
+            </button>
+          </div>
+
+          <!-- CARD 2: DHAHABU -->
+          <div class="package-card">
+            <div class="tier-badge">Kifurushi 02</div>
+            <div class="tier-name">Dhahabu</div>
+            <div class="tier-price">TZS <b>600,000</b> / mwaka</div>
+
+            <div class="surprise-preview">
+              <span class="prize-tag"><span class="emoji">🎁</span> Zawadi 1/robo</span>
+              <span class="prize-tag"><span class="emoji">🎟️</span> 2 Bahati Nasibu</span>
+              <span class="prize-tag"><span class="emoji">💰</span> 20% Punguzo</span>
+            </div>
+
+            <ul class="benefits">
+              <li>Zawadi 1 iliyohakikishwa kila robo mwaka</li>
+              <li>Nafasi 2 za bahati nasibu kila mwezi</li>
+              <li>Kipaumbele cha huduma</li>
+            </ul>
+
+            <button class="btn card-btn btn-gold" onclick="openModal('Dhahabu','600,000')">
+              Jiunge Sasa
+            </button>
+          </div>
+
+          <!-- CARD 3: ALMASI (FEATURED) -->
+          <div class="package-card featured">
+            <div class="tier-badge">Kifurushi 03 · Maarufu</div>
+            <div class="tier-name">Almasi</div>
+            <div class="tier-price">TZS <b>1,200,000</b> / mwaka</div>
+
+            <div class="surprise-preview">
+              <span class="prize-tag"><span class="emoji">🎁</span> Zawadi 2/robo</span>
+              <span class="prize-tag"><span class="emoji">🎟️</span> 3 Bahati Nasibu</span>
+              <span class="prize-tag"><span class="emoji">💰</span> 30% Punguzo</span>
+              <span class="prize-tag"><span class="emoji">💸</span> Cashback</span>
+            </div>
+
+            <ul class="benefits">
+              <li>Zawadi 2 zilizohakikishwa kila robo mwaka</li>
+              <li>Nafasi 3 za bahati nasibu kila mwezi</li>
+              <li>Marejesho ya fedha (cashback)</li>
+              <li>Simu ya moja kwa moja kwa huduma</li>
+            </ul>
+
+            <button class="btn card-btn btn-gold" onclick="openModal('Almasi','1,200,000')">
+              Jiunge Sasa
+            </button>
+          </div>
+
+          <!-- CARD 4: TAJI -->
+          <div class="package-card taji">
+            <div class="tier-badge">Kifurushi 04 · VIP</div>
+            <div class="tier-name" style="color:var(--gold);">Taji</div>
+            <div class="tier-price">TZS <b>2,500,000</b> / mwaka</div>
+
+            <div class="surprise-preview">
+              <span class="prize-tag"><span class="emoji">👑</span> Zawadi Kubwa</span>
+              <span class="prize-tag"><span class="emoji">🎟️</span> 5 Bahati Nasibu</span>
+              <span class="prize-tag"><span class="emoji">💰</span> 40% Punguzo</span>
+              <span class="prize-tag"><span class="emoji">✨</span> VIP</span>
+            </div>
+
+            <ul class="benefits">
+              <li>Zawadi KUBWA iliyohakikishwa kila robo</li>
+              <li>Nafasi 5 za bahati nasibu kila mwezi</li>
+              <li>Laini maalum ya huduma ya VIP</li>
+              <li>Mwaliko wa matukio maalum</li>
+            </ul>
+
+            <button class="btn card-btn btn-gold" onclick="openModal('Taji','2,500,000')">
+              Jiunge Sasa
+            </button>
+          </div>
+
+        </div><!-- /package-grid -->
+
+        <div class="packages-footer">
+          <a href="#zawadi" class="btn btn-ghost">🎁 Tazama Zawadi Zote →</a>
+        </div>
       </div>
-      <div class="step">
-        <div class="num">02</div>
-        <h3>Lipia kupitia namba yetu</h3>
-        <p>Tumia Mixx, M-Pesa, Airtel Money au Halopesa kutuma malipo kwenye namba ya biashara iliyoonyeshwa.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 📱 JINSI INAVYOFANYA KAZI                                    -->
+  <!-- ============================================================ -->
+
+  <section id="jinsi">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Mchakato</div>
+        <h2>Hatua 3 tu — anza leo</h2>
+        <p>Hakuna app. Kila kitu kupitia namba ya biashara ya pesa ya simu.</p>
       </div>
-      <div class="step">
-        <div class="num">03</div>
-        <h3>Thibitisha na anza kutumia</h3>
-        <p>Weka namba yako ya simu uliyolipia, tunathibitisha, na uanachama wako unaanza mara moja.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <h3>Chagua kifurushi</h3>
+          <p>Angalia vifurushi na chagua kinachokufaa.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h3>Lipia kupitia namba</h3>
+          <p>Tuma malipo kwenye namba ya biashara iliyoonyeshwa.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h3>Thibitisha na anza</h3>
+          <p>Weka namba yako, tunathibitisha, na uanachama wako unaanza.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="tiers" id="tunzo">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Vifurushi vya Uanachama</div>
-      <h2>Kadiri unavyopanda kifurushi, ndivyo tunzo zinavyoongezeka.</h2>
-      <p>Malipo ni ya mwaka mmoja wa uanachama. Kiwango cha chini ni TZS 300,000.</p>
+  <!-- ============================================================ -->
+  <!-- 🎁 ZAWADI SHOWCASE                                           -->
+  <!-- ============================================================ -->
+
+  <section id="zawadi" style="background:var(--ink-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Zawadi</div>
+        <h2>Baadhi ya tunzo unazoweza kushinda</h2>
+        <p>Zawadi hutofautiana kulingana na kifurushi chako na bahati nasibu ya mwezi.</p>
+      </div>
+      <div class="gifts-mini">
+        <div class="gift-mini">
+          <div class="icon">📱</div>
+          <h4>Simu Janja</h4>
+          <p>iPhone, Samsung na nyingine</p>
+        </div>
+        <div class="gift-mini">
+          <div class="icon">🏍️</div>
+          <h4>Pikipiki</h4>
+          <p>Zawadi kuu ya robo mwaka</p>
+        </div>
+        <div class="gift-mini">
+          <div class="icon">💵</div>
+          <h4>Fedha Taslimu</h4>
+          <p>Marejesho kwenye akaunti yako</p>
+        </div>
+        <div class="gift-mini">
+          <div class="icon">🧺</div>
+          <h4>Vifaa vya Nyumbani</h4>
+          <p>Jokofu, TV, na zaidi</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="tier-grid">
+  <!-- ============================================================ -->
+  <!-- 💬 TESTIMONIALS                                             -->
+  <!-- ============================================================ -->
 
-      <article class="ticket" data-tier="Fedha" data-price="300,000">
-        <div class="ticket-top">
-          <div class="ticket-tier">Kifurushi 01</div>
-          <div class="ticket-name">Fedha</div>
-          <div class="ticket-price">TZS <b>300,000</b> / mwaka</div>
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Washindi</div>
+        <h2>Wanachama wameshinda nini?</h2>
+      </div>
+      <div class="testi-mini">
+        <blockquote>
+          "Nilijiunga na Dhahabu, mwezi wa tatu nikapata simu mpya."
+          <div class="who"><b>Asha M.</b> · Dar es Salaam <span class="badge badge-green" style="font-size:8px;padding:1px 8px;margin-left:6px;">Amelipwa</span></div>
+        </blockquote>
+        <blockquote>
+          "Punguzo la maduka peke yake linalipia uanachama wangu."
+          <div class="who"><b>Juma K.</b> · Mwanza <span class="badge badge-green" style="font-size:8px;padding:1px 8px;margin-left:6px;">Amelipwa</span></div>
+        </blockquote>
+        <blockquote>
+          "Huduma ya VIP ya Taji ni tofauti kabisa."
+          <div class="who"><b>Neema R.</b> · Arusha <span class="badge badge-green" style="font-size:8px;padding:1px 8px;margin-left:6px;">Amelipwa</span></div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ❓ FAQ                                                      -->
+  <!-- ============================================================ -->
+
+  <section id="maswali" style="background:var(--ink-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Maswali</div>
+        <h2>Kila kitu unachohitaji kujua</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Malipo yanafanyika vipi? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Malipo yote yanafanyika kupitia namba rasmi ya biashara ya pesa ya simu ya TunzoClub. Baada ya kulipa, unathibitisha namba yako ya simu ili uanachama wako uanze.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Uanachama unadumu muda gani? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Kila kifurushi ni cha mwaka mmoja (miezi 12) kuanzia siku ya uthibitisho wa malipo yako.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Naweza kubadilisha kifurushi baadaye? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Ndiyo. Unaweza kupandisha kifurushi wakati wowote kwa kulipa tofauti ya bei.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Nini kitatokea nikishinda? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Washindi wanawasiliana nao moja kwa moja kupitia namba ya simu waliyosajili, na maelezo ya jinsi ya kupokea zawadi hutumwa kwa SMS.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 📌 FOOTER                                                   -->
+  <!-- ============================================================ -->
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-col">
+          <div class="logo">Tunzo<span>Club</span></div>
+          <p style="margin-top:8px;font-size:13px;color:var(--mist);">Kilabu cha uanachama kinachotoa punguzo na tunzo kwa Watanzania.</p>
+        </div>
+        <div class="foot-col">
+          <h5>Kiungo</h5>
           <ul>
-            <li>10% punguzo maduka washirika</li>
-            <li>Nafasi 1 ya bahati nasibu kila mwezi</li>
-            <li>Arifa za matoleo kwa SMS</li>
+            <li><a href="#packages">Vifurushi</a></li>
+            <li><a href="#zawadi">Zawadi</a></li>
+            <li><a href="#jinsi">Jinsi</a></li>
+            <li><a href="#maswali">Maswali</a></li>
           </ul>
         </div>
-        <div class="perforation"></div>
-        <div class="ticket-stub">
-          <div class="stub-label">TUNZOCLUB · FEDHA</div>
-          <button class="btn btn-gold join-btn" onclick="openModal('Fedha','300,000')">Jiunge Sasa</button>
-        </div>
-      </article>
-
-      <article class="ticket" data-tier="Dhahabu" data-price="600,000">
-        <div class="ticket-top">
-          <div class="ticket-tier">Kifurushi 02</div>
-          <div class="ticket-name">Dhahabu</div>
-          <div class="ticket-price">TZS <b>600,000</b> / mwaka</div>
+        <div class="foot-col">
+          <h5>Wasiliana</h5>
           <ul>
-            <li>20% punguzo maduka washirika</li>
-            <li>Zawadi 1 ya moja kwa moja kila robo mwaka</li>
-            <li>Nafasi 2 za bahati nasibu kila mwezi</li>
-            <li>Kipaumbele kwenye foleni ya huduma</li>
+            <li><a href="tel:+255000000000">+255 000 000 000</a></li>
+            <li><a href="mailto:msaada@tunzoclub.co.tz">msaada@tunzoclub.co.tz</a></li>
           </ul>
         </div>
-        <div class="perforation"></div>
-        <div class="ticket-stub">
-          <div class="stub-label">TUNZOCLUB · DHAHABU</div>
-          <button class="btn btn-gold join-btn" onclick="openModal('Dhahabu','600,000')">Jiunge Sasa</button>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Kumbuka:</strong> Namba ya malipo inayoonekana kwenye tovuti hii ni nafasi-mfano (placeholder). Kabla ya kuchapisha, badilisha na namba halisi ya biashara ya TunzoClub.
+      </div>
+
+      <div class="foot-bottom">
+        <span>© 2026 TunzoClub TZ</span>
+        <span>Sio kampuni tanzu ya Yas, Vodacom, Airtel au Halotel.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- 🟡 MODAL                                                    -->
+  <!-- ============================================================ -->
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()" aria-label="Funga">&times;</button>
+
+      <div class="form-view" id="formView">
+        <h3 id="modalTierName">Fedha</h3>
+        <div class="modal-tier" id="modalPrice">TZS 300,000 / mwaka</div>
+
+        <div class="pay-box">
+          <div class="row"><span>Lipa kupitia</span><b>Mixx / Namba ya Biashara</b></div>
+          <div class="row"><span>Namba ya Malipo</span><b class="till">255-XXX-XXXXXX</b></div>
+          <div class="row"><span>Kiasi</span><b id="payAmount">TZS 300,000</b></div>
+          <button class="btn copy-btn" onclick="copyTill()">📋 Nakili Namba</button>
         </div>
-      </article>
 
-      <article class="ticket featured" data-tier="Almasi" data-price="1,200,000">
-        <div class="featured-flag">MAARUFU</div>
-        <div class="ticket-top">
-          <div class="ticket-tier">Kifurushi 03</div>
-          <div class="ticket-name">Almasi</div>
-          <div class="ticket-price">TZS <b>1,200,000</b> / mwaka</div>
-          <ul>
-            <li>30% punguzo maduka washirika</li>
-            <li>Marejesho ya fedha (cashback) kila ununuzi</li>
-            <li>Zawadi 2 kila robo mwaka</li>
-            <li>Simu ya moja kwa moja na huduma kwa wateja</li>
-          </ul>
+        <div class="field" id="phoneField">
+          <label for="phoneInput">Namba ya simu uliyolipia</label>
+          <input type="tel" id="phoneInput" placeholder="0712 345 678">
+          <div class="err">Weka namba sahihi ya Tanzania (mfano 0712345678)</div>
         </div>
-        <div class="perforation"></div>
-        <div class="ticket-stub">
-          <div class="stub-label">TUNZOCLUB · ALMASI</div>
-          <button class="btn btn-gold join-btn" onclick="openModal('Almasi','1,200,000')">Jiunge Sasa</button>
+
+        <button class="btn confirm-btn" onclick="confirmPayment()">✅ Nimelipa — Thibitisha</button>
+      </div>
+
+      <div class="success-view" id="successView">
+        <div class="success-icon">✓</div>
+        <h3>Umethibitishwa!</h3>
+        <p style="color:#5B5646;font-size:13.5px;">Karibu TunzoClub. Uanachama wako unaanza sasa.</p>
+        <div class="receipt">
+          <div class="row"><span>Kifurushi</span><b id="rcptTier">Fedha</b></div>
+          <div class="row"><span>Kiasi</span><b id="rcptAmount">TZS 300,000</b></div>
+          <div class="row"><span>Namba</span><b id="rcptPhone">—</b></div>
+          <div class="row"><span>Namba ya Uanachama</span><b id="rcptId">—</b></div>
         </div>
-      </article>
-
-      <article class="ticket" data-tier="Taji" data-price="2,500,000">
-        <div class="ticket-top">
-          <div class="ticket-tier">Kifurushi 04</div>
-          <div class="ticket-name">Taji</div>
-          <div class="ticket-price">TZS <b>2,500,000</b> / mwaka</div>
-          <ul>
-            <li>40% punguzo maduka washirika</li>
-            <li>Zawadi kubwa iliyohakikishwa kila robo mwaka</li>
-            <li>Laini maalum ya huduma ya VIP</li>
-            <li>Mwaliko kwa matukio maalum ya TunzoClub</li>
-          </ul>
-        </div>
-        <div class="perforation"></div>
-        <div class="ticket-stub">
-          <div class="stub-label">TUNZOCLUB · TAJI</div>
-          <button class="btn btn-gold join-btn" onclick="openModal('Taji','2,500,000')">Jiunge Sasa</button>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<section id="zawadi">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Zawadi Zinazopatikana</div>
-      <h2>Baadhi ya tunzo ambazo wanachama wamekuwa wakipata.</h2>
-      <p>Zawadi hutofautiana kwa mzunguko kulingana na kifurushi chako na bahati nasibu ya mwezi.</p>
-    </div>
-    <div class="gifts-grid">
-      <div class="gift-card">
-        <div class="gift-icon">📱</div>
-        <h4>Simu Janja</h4>
-        <p>Smartphone mpya kwa washindi wa bahati nasibu ya kila mwezi.</p>
-      </div>
-      <div class="gift-card">
-        <div class="gift-icon">🏍️</div>
-        <h4>Pikipiki</h4>
-        <p>Zawadi kuu ya robo mwaka kwa wanachama wa Almasi na Taji.</p>
-      </div>
-      <div class="gift-card">
-        <div class="gift-icon">💵</div>
-        <h4>Fedha Taslimu</h4>
-        <p>Marejesho ya moja kwa moja kwenye akaunti yako ya pesa ya simu.</p>
-      </div>
-      <div class="gift-card">
-        <div class="gift-icon">🧺</div>
-        <h4>Vifaa vya Nyumbani</h4>
-        <p>Jokofu, TV na vifaa vingine kwa washindi wateule kila robo mwaka.</p>
+        <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="closeModal()">Funga</button>
       </div>
     </div>
   </div>
-</section>
 
-<section class="testi-strip">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Wanachama Wanasema</div>
-      <h2>Watu halisi, tunzo halisi.</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi">
-        <p>"Nilijiunga na kifurushi cha Dhahabu, mwezi wa tatu nikapata simu mpya. Malipo yalikuwa rahisi kupitia Mixx."</p>
-        <div class="testi-who"><b>Asha M.</b> · Dar es Salaam <span class="paid-badge">Amelipwa</span></div>
-      </div>
-      <div class="testi">
-        <p>"Punguzo la maduka washirika peke yake linalipia gharama ya uanachama wangu kila mwaka."</p>
-        <div class="testi-who"><b>Juma K.</b> · Mwanza <span class="paid-badge">Amelipwa</span></div>
-      </div>
-      <div class="testi">
-        <p>"Huduma ya VIP ya Taji ni tofauti kabisa — walinipigia simu ndani ya siku moja."</p>
-        <div class="testi-who"><b>Neema R.</b> · Arusha <span class="paid-badge">Amelipwa</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- ============================================================ -->
+  <!-- 📜 SCRIPTS                                                  -->
+  <!-- ============================================================ -->
 
-<section id="maswali">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Maswali Yanayoulizwa Mara kwa Mara</div>
-      <h2>Kila kitu unachohitaji kujua kabla ya kujiunga.</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Je, malipo yanafanyika vipi? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Malipo yote yanafanyika kupitia namba rasmi ya biashara ya pesa ya simu ya TunzoClub. Baada ya kulipa, unathibitisha namba yako ya simu kwenye tovuti hii ili uanachama wako uanze.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Uanachama unadumu muda gani? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Kila kifurushi ni cha mwaka mmoja (miezi 12) kuanzia siku ya uthibitisho wa malipo yako.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Naweza kubadilisha kifurushi baadaye? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Ndiyo. Unaweza kupandisha kifurushi wakati wowote kwa kulipa tofauti ya bei kati ya kifurushi chako cha sasa na kipya.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Nini kitatokea nikishinda zawadi? <span class="plus">+</span></button>
-        <div class="faq-a"><p>Washindi wanawasiliana nao moja kwa moja kupitia namba ya simu waliyosajili, na maelezo ya jinsi ya kupokea zawadi hutumwa kwa SMS.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+  <script>
+    // ---- FAQ accordion ----
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }
 
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-col">
-        <div class="logo">Tunzo<span>Club</span></div>
-        <p style="margin-top:14px;">Kilabu cha uanachama kinachotoa punguzo halisi na tunzo kwa Watanzania, kupitia pesa ya simu.</p>
-      </div>
-      <div class="foot-col">
-        <h5>Tovuti</h5>
-        <ul>
-          <li><a href="#zawadi">Zawadi</a></li>
-          <li><a href="#jinsi">Jinsi Inavyofanya Kazi</a></li>
-          <li><a href="#tunzo">Vifurushi</a></li>
-          <li><a href="#maswali">Maswali</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
-        <h5>Wasiliana Nasi</h5>
-        <ul>
-          <li><a href="tel:+255000000000">+255 000 000 000</a></li>
-          <li><a href="mailto:msaada@tunzoclub.co.tz">msaada@tunzoclub.co.tz</a></li>
-          <li><a href="#">Dar es Salaam, Tanzania</a></li>
-        </ul>
-      </div>
-    </div>
+    // ---- Payment modal ----
+    const TILL_NUMBER = "255-XXX-XXXXXX"; // TODO: replace with real till number
+    let currentTier = { name: '', price: '' };
 
-    <div class="disclaimer">
-      <strong>Kumbuka:</strong> Namba ya malipo inayoonekana kwenye tovuti hii ni nafasi-mfano (placeholder). Kabla ya kuchapisha tovuti hii, badilisha na namba halisi ya biashara ya TunzoClub iliyosajiliwa na mtoa huduma wa pesa ya simu.
-    </div>
+    function openModal(tier, price) {
+      currentTier = { name: tier, price: price };
+      document.getElementById('modalTierName').textContent = tier;
+      document.getElementById('modalPrice').textContent = 'TZS ' + price + ' / mwaka';
+      document.getElementById('payAmount').textContent = 'TZS ' + price;
+      document.getElementById('formView').classList.remove('hidden');
+      document.getElementById('successView').classList.remove('active');
+      document.getElementById('phoneInput').value = '';
+      document.getElementById('phoneField').classList.remove('invalid');
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
 
-    <div class="foot-bottom">
-      <span>© 2026 TunzoClub TZ. Haki zote zimehifadhiwa.</span>
-      <span>Sio kampuni tanzu ya Yas, Vodacom, Airtel au Halotel.</span>
-    </div>
-  </div>
-</footer>
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
 
-<!-- PAYMENT MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()" aria-label="Funga">&times;</button>
-
-    <div class="form-view" id="formView">
-      <h3 id="modalTierName">Fedha</h3>
-      <div class="modal-tier" id="modalPrice">TZS 300,000 / mwaka</div>
-
-      <div class="pay-box">
-        <div class="row"><span>Lipa kupitia</span><b>Mixx by Yas / Namba ya Biashara</b></div>
-        <div class="row"><span>Namba ya Malipo</span><b class="till">255-XXX-XXXXXX</b></div>
-        <div class="row"><span>Kiasi</span><b id="payAmount">TZS 300,000</b></div>
-        <button class="btn copy-btn" onclick="copyTill()">Nakili Namba</button>
-      </div>
-
-      <div class="field" id="phoneField">
-        <label for="phoneInput">Namba ya simu uliyolipia</label>
-        <input type="tel" id="phoneInput" placeholder="07XX XXX XXX">
-        <div class="err">Weka namba sahihi ya Tanzania, mfano 0712345678</div>
-      </div>
-
-      <button class="btn confirm-btn" onclick="confirmPayment()">Nimelipa — Thibitisha</button>
-    </div>
-
-    <div class="success-view" id="successView">
-      <div class="success-icon">✓</div>
-      <h3>Umethibitishwa!</h3>
-      <p style="color:#5B5646;font-size:14px;">Karibu TunzoClub. Uanachama wako unaanza sasa.</p>
-      <div class="receipt">
-        <div class="row"><span>Kifurushi</span><b id="rcptTier">Fedha</b></div>
-        <div class="row"><span>Kiasi</span><b id="rcptAmount">TZS 300,000</b></div>
-        <div class="row"><span>Namba ya Simu</span><b id="rcptPhone">—</b></div>
-        <div class="row"><span>Namba ya Uanachama</span><b id="rcptId">—</b></div>
-      </div>
-      <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="closeModal()">Funga</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  // ---- USSD hero cycling text ----
-  const ussdSteps = [
-    "Chagua huduma:\n1. Lipia Bili\n2. Tuma Pesa\n3. TunzoClub",
-    "TUNZOCLUB\nChagua kifurushi:\n1. Fedha - 300,000\n2. Dhahabu - 600,000\n3. Almasi - 1,200,000\n4. Taji - 2,500,000",
-    "Umechagua: Dhahabu\nKiasi: TZS 600,000\n\n1. Thibitisha\n2. Ghairi",
-    "Asante!\nMalipo yamepokelewa.\nUanachama wako\numeanza. Karibu\nTunzoClub."
-  ];
-  let ussdIdx = 0;
-  const ussdEl = document.getElementById('ussdBody');
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!prefersReduced) {
-    setInterval(() => {
-      ussdIdx = (ussdIdx + 1) % ussdSteps.length;
-      ussdEl.innerHTML = ussdSteps[ussdIdx].replace(/\n/g, '<br>') + '<span class="ussd-cursor"></span>';
-    }, 3200);
-  }
-
-  // ---- FAQ accordion ----
-  function toggleFaq(btn){
-    const item = btn.parentElement;
-    const answer = item.querySelector('.faq-a');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(el=>{
-      el.classList.remove('open');
-      el.querySelector('.faq-a').style.maxHeight = null;
+    document.getElementById('modalOverlay').addEventListener('click', (e) => {
+      if (e.target.id === 'modalOverlay') closeModal();
     });
-    if(!isOpen){
-      item.classList.add('open');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    function copyTill() {
+      navigator.clipboard?.writeText(TILL_NUMBER.replace(/-/g, ''));
+      const btn = document.querySelector('.copy-btn');
+      const original = btn.textContent;
+      btn.textContent = '✓ Imenakiliwa';
+      setTimeout(() => btn.textContent = original, 1600);
     }
-  }
 
-  // ---- Payment modal ----
-  const TILL_NUMBER = "255-XXX-XXXXXX"; // TODO: replace with real registered business till number
-  let currentTier = { name:'', price:'' };
-
-  function openModal(tier, price){
-    currentTier = { name: tier, price: price };
-    document.getElementById('modalTierName').textContent = tier;
-    document.getElementById('modalPrice').textContent = 'TZS ' + price + ' / mwaka';
-    document.getElementById('payAmount').textContent = 'TZS ' + price;
-    document.getElementById('formView').classList.remove('hidden');
-    document.getElementById('successView').classList.remove('active');
-    document.getElementById('phoneInput').value = '';
-    document.getElementById('phoneField').classList.remove('invalid');
-    document.getElementById('modalOverlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal(){
-    document.getElementById('modalOverlay').classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  document.getElementById('modalOverlay').addEventListener('click', (e)=>{
-    if(e.target.id === 'modalOverlay') closeModal();
-  });
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape') closeModal();
-  });
-
-  function copyTill(){
-    navigator.clipboard?.writeText(TILL_NUMBER.replace(/-/g,''));
-    const btn = document.querySelector('.copy-btn');
-    const original = btn.textContent;
-    btn.textContent = 'Imenakiliwa ✓';
-    setTimeout(()=>btn.textContent = original, 1600);
-  }
-
-  function isValidTzPhone(v){
-    const cleaned = v.replace(/\s+/g,'');
-    return /^(0|255)(6|7)\d{8}$/.test(cleaned);
-  }
-
-  function confirmPayment(){
-    const input = document.getElementById('phoneInput');
-    const field = document.getElementById('phoneField');
-    if(!isValidTzPhone(input.value)){
-      field.classList.add('invalid');
-      input.focus();
-      return;
+    function isValidTzPhone(v) {
+      const cleaned = v.replace(/\s+/g, '');
+      return /^(0|255)(6[0-9]|7[0-9])\d{7}$/.test(cleaned);
     }
-    field.classList.remove('invalid');
 
-    // Client-side only: store membership record locally
-    const memberId = 'TC-' + Math.floor(100000 + Math.random()*899999);
-    const record = {
-      id: memberId,
-      tier: currentTier.name,
-      price: currentTier.price,
-      phone: input.value.trim(),
-      date: new Date().toISOString()
-    };
-    try{
-      const existing = JSON.parse(localStorage.getItem('tunzoclub_members') || '[]');
-      existing.push(record);
-      localStorage.setItem('tunzoclub_members', JSON.stringify(existing));
-    }catch(e){ /* localStorage unavailable, continue silently */ }
+    function confirmPayment() {
+      const input = document.getElementById('phoneInput');
+      const field = document.getElementById('phoneField');
+      if (!isValidTzPhone(input.value)) {
+        field.classList.add('invalid');
+        input.focus();
+        return;
+      }
+      field.classList.remove('invalid');
 
-    document.getElementById('rcptTier').textContent = currentTier.name;
-    document.getElementById('rcptAmount').textContent = 'TZS ' + currentTier.price;
-    document.getElementById('rcptPhone').textContent = input.value.trim();
-    document.getElementById('rcptId').textContent = memberId;
+      const memberId = 'TC-' + Math.floor(100000 + Math.random() * 899999);
+      const record = {
+        id: memberId,
+        tier: currentTier.name,
+        price: currentTier.price,
+        phone: input.value.trim(),
+        date: new Date().toISOString()
+      };
+      try {
+        const existing = JSON.parse(localStorage.getItem('tunzoclub_members') || '[]');
+        existing.push(record);
+        localStorage.setItem('tunzoclub_members', JSON.stringify(existing));
+      } catch (e) { /* ignore */ }
 
-    document.getElementById('formView').classList.add('hidden');
-    document.getElementById('successView').classList.add('active');
-  }
-</script>
+      document.getElementById('rcptTier').textContent = currentTier.name;
+      document.getElementById('rcptAmount').textContent = 'TZS ' + currentTier.price;
+      document.getElementById('rcptPhone').textContent = input.value.trim();
+      document.getElementById('rcptId').textContent = memberId;
+
+      document.getElementById('formView').classList.add('hidden');
+      document.getElementById('successView').classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
