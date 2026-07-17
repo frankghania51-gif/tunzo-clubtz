@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TunzoClub — Vifurushi vya Uanachama | M-Pesa</title>
+<title>Vodacom Tunzo — Vifurushi vya Uanachama</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -20,9 +20,10 @@
     --maroon: #7C2A38;
     --mist: #A9A48C;
     --line: #33392F;
-    --mpesa-green: #00A651;
-    --mpesa-dark: #1A5C2A;
-    --mpesa-light: #E8F5E9;
+    --vodacom-red: #E2001A;
+    --vodacom-red-dark: #B30014;
+    --vodacom-red-light: #FFE8EA;
+    --vodacom-green: #00A651;
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Work Sans', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
@@ -63,12 +64,12 @@
   }
 
   ::selection {
-    background: var(--gold);
-    color: var(--ink);
+    background: var(--vodacom-red);
+    color: #fff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--gold);
+    outline: 2px solid var(--vodacom-red);
     outline-offset: 3px;
   }
 
@@ -92,7 +93,7 @@
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--vodacom-red);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -101,7 +102,7 @@
     content: '';
     width: 16px;
     height: 2px;
-    background: var(--gold);
+    background: var(--vodacom-red);
     display: inline-block;
   }
 
@@ -115,22 +116,17 @@
     padding: 3px 10px;
     border-radius: 20px;
   }
+  .badge-red {
+    background: var(--vodacom-red);
+    color: #fff;
+  }
   .badge-gold {
     background: var(--gold);
     color: var(--ink);
   }
   .badge-green {
-    background: var(--mpesa-green);
+    background: var(--vodacom-green);
     color: #fff;
-  }
-  .badge-maroon {
-    background: var(--maroon);
-    color: #fff;
-  }
-  .badge-mpesa {
-    background: var(--mpesa-green);
-    color: #fff;
-    font-weight: 700;
   }
 
   /* ---------- NAV ---------- */
@@ -138,16 +134,16 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(18, 22, 15, 0.92);
+    background: rgba(18, 22, 15, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--line);
+    border-bottom: 2px solid var(--vodacom-red);
   }
   .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 0;
+    padding: 10px 0;
   }
   .logo {
     display: flex;
@@ -158,7 +154,10 @@
     font-size: 20px;
     color: var(--paper);
   }
-  .logo span {
+  .logo .vodacom {
+    color: var(--vodacom-red);
+  }
+  .logo .tunzo {
     color: var(--gold);
   }
   .nav-links {
@@ -201,6 +200,15 @@
     gap: 8px;
     transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
+  .btn-red {
+    background: var(--vodacom-red);
+    color: #fff;
+  }
+  .btn-red:hover {
+    background: var(--vodacom-red-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px rgba(226, 0, 26, 0.5);
+  }
   .btn-gold {
     background: var(--gold);
     color: #221604;
@@ -215,25 +223,8 @@
     border: 1px solid var(--line);
   }
   .btn-ghost:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-  .btn-green {
-    background: var(--mpesa-green);
-    color: #fff;
-  }
-  .btn-green:hover {
-    background: var(--mpesa-dark);
-    transform: translateY(-2px);
-  }
-  .btn-mpesa {
-    background: var(--mpesa-green);
-    color: #fff;
-  }
-  .btn-mpesa:hover {
-    background: var(--mpesa-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px -8px rgba(0, 166, 81, 0.5);
+    border-color: var(--vodacom-red);
+    color: var(--vodacom-red);
   }
   .btn-full {
     width: 100%;
@@ -249,8 +240,8 @@
     position: relative;
     overflow: hidden;
     background:
-      radial-gradient(ellipse 600px 300px at 80% 0%, rgba(242, 169, 59, 0.10), transparent 60%),
-      radial-gradient(ellipse 400px 300px at 20% 100%, rgba(0, 166, 81, 0.08), transparent 60%);
+      radial-gradient(ellipse 600px 300px at 80% 0%, rgba(226, 0, 26, 0.10), transparent 60%),
+      radial-gradient(ellipse 400px 300px at 20% 100%, rgba(242, 169, 59, 0.08), transparent 60%);
   }
 
   /* ---- HERO HEADLINE ---- */
@@ -267,6 +258,12 @@
     line-height: 1.08;
     margin: 10px 0 6px;
   }
+  .landing-header h1 .vodacom {
+    color: var(--vodacom-red);
+  }
+  .landing-header h1 .tunzo {
+    color: var(--gold);
+  }
   .landing-header h1 em {
     font-style: normal;
     color: var(--gold);
@@ -278,25 +275,25 @@
     margin: 0 auto;
   }
 
-  /* ---- M-Pesa Badge ---- */
-  .mpesa-badge {
+  /* ---- Vodacom Badge ---- */
+  .vodacom-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(0, 166, 81, 0.12);
-    border: 1px solid rgba(0, 166, 81, 0.2);
+    background: rgba(226, 0, 26, 0.12);
+    border: 1px solid rgba(226, 0, 26, 0.2);
     border-radius: 30px;
     padding: 4px 16px 4px 12px;
     margin-top: 12px;
     font-size: 12px;
-    color: var(--mpesa-green);
-    font-weight: 500;
+    color: var(--vodacom-red);
+    font-weight: 600;
   }
-  .mpesa-badge .dot {
+  .vodacom-badge .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--mpesa-green);
+    background: var(--vodacom-red);
     display: inline-block;
     animation: pulse-dot 1.5s ease-in-out infinite;
   }
@@ -351,6 +348,9 @@
   .packages-header h2 {
     font-size: clamp(18px, 2.8vw, 26px);
   }
+  .packages-header h2 .vodacom {
+    color: var(--vodacom-red);
+  }
   .packages-header .sub {
     color: var(--mist);
     font-size: 12.5px;
@@ -390,22 +390,23 @@
   }
 
   .package-card:hover {
-    border-color: var(--gold);
+    border-color: var(--vodacom-red);
     transform: translateY(-3px);
-    box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 12px 32px -12px rgba(226, 0, 26, 0.3);
   }
 
   /* Featured card — Almasi */
   .package-card.featured {
-    border-color: var(--maroon);
-    background: linear-gradient(145deg, #1F1718, #151011);
+    border-color: var(--vodacom-red);
+    background: linear-gradient(145deg, #1F1012, #150A0C);
+    border-width: 2px;
   }
   .package-card.featured::before {
     content: '⭐ MAARUFU';
     position: absolute;
     top: 10px;
     right: -28px;
-    background: var(--maroon);
+    background: var(--vodacom-red);
     color: #fff;
     font-family: var(--font-mono);
     font-size: 8px;
@@ -422,7 +423,7 @@
     font-size: 9px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--vodacom-red);
     margin-bottom: 2px;
   }
   .package-card .tier-name {
@@ -441,10 +442,10 @@
     color: var(--paper);
   }
 
-  /* M-Pesa payment note on card */
+  /* Payment note on card */
   .package-card .payment-note {
     font-size: 9px;
-    color: var(--mpesa-green);
+    color: var(--vodacom-green);
     font-family: var(--font-mono);
     background: rgba(0, 166, 81, 0.08);
     padding: 2px 10px;
@@ -495,7 +496,7 @@
   }
   .package-card .benefits li::before {
     content: '✓';
-    color: var(--mpesa-green);
+    color: var(--vodacom-red);
     font-weight: 700;
     font-size: 11px;
   }
@@ -509,14 +510,6 @@
     justify-content: center;
     width: 100%;
     font-weight: 600;
-  }
-  .package-card .card-btn.btn-mpesa {
-    background: var(--mpesa-green);
-    color: #fff;
-  }
-  .package-card .card-btn.btn-mpesa:hover {
-    background: var(--mpesa-dark);
-    box-shadow: 0 4px 16px -4px rgba(0, 166, 81, 0.4);
   }
 
   /* Special card: Taji gets a glow */
@@ -629,6 +622,9 @@
     font-size: clamp(20px, 2.8vw, 30px);
     margin-top: 6px;
   }
+  .sec-head h2 .vodacom {
+    color: var(--vodacom-red);
+  }
   .sec-head p {
     color: var(--mist);
     margin-top: 6px;
@@ -656,7 +652,7 @@
   }
   .step .num {
     font-family: var(--font-mono);
-    color: var(--gold);
+    color: var(--vodacom-red);
     font-size: 20px;
     font-weight: 600;
   }
@@ -669,16 +665,17 @@
     font-size: 12.5px;
     margin: 0;
   }
-  .step .mpesa-icon {
+  .step .pay-number {
     display: inline-block;
-    background: var(--mpesa-green);
+    background: var(--vodacom-red);
     color: #fff;
-    font-size: 8px;
+    font-size: 11px;
     font-weight: 700;
-    padding: 1px 10px;
+    padding: 2px 14px;
     border-radius: 12px;
     letter-spacing: 0.06em;
     margin-top: 4px;
+    font-family: var(--font-mono);
   }
 
   /* ----- GIFTS SHOWCASE (mini) ----- */
@@ -766,7 +763,7 @@
   }
   .faq-q .plus {
     font-family: var(--font-mono);
-    color: var(--gold);
+    color: var(--vodacom-red);
     transition: transform 0.2s;
     font-size: 18px;
   }
@@ -788,7 +785,7 @@
   /* ----- FOOTER ----- */
   footer {
     padding: 36px 0 20px;
-    border-top: 1px solid var(--line);
+    border-top: 2px solid var(--vodacom-red);
   }
   .foot-grid {
     display: grid;
@@ -824,7 +821,7 @@
     transition: color 0.15s;
   }
   .foot-col a:hover {
-    color: var(--gold);
+    color: var(--vodacom-red);
   }
   .foot-bottom {
     display: flex;
@@ -850,13 +847,13 @@
   }
 
   /* ============================================================ */
-  /* 🟢 MODAL — M-PESA STYLE                                     */
+  /* 🔴 MODAL — VODACOM PAYMENT                                  */
   /* ============================================================ */
 
   .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(9, 11, 7, 0.8);
+    background: rgba(9, 11, 7, 0.85);
     backdrop-filter: blur(4px);
     display: none;
     align-items: center;
@@ -896,11 +893,11 @@
   .modal .modal-tier {
     font-family: var(--font-mono);
     font-size: 12px;
-    color: var(--gold-deep);
+    color: var(--vodacom-red);
     margin-bottom: 16px;
   }
 
-  /* M-Pesa Pay Box */
+  /* Pay Box */
   .pay-box {
     background: var(--ink);
     color: var(--paper);
@@ -908,7 +905,7 @@
     padding: 14px 16px;
     margin-bottom: 16px;
     font-family: var(--font-mono);
-    border-left: 4px solid var(--mpesa-green);
+    border-left: 4px solid var(--vodacom-red);
   }
   .pay-box .row {
     display: flex;
@@ -923,19 +920,23 @@
   }
   .pay-box .till {
     font-size: 20px;
-    color: var(--mpesa-green);
+    color: var(--vodacom-red);
     letter-spacing: 0.04em;
     font-weight: 700;
   }
-  .pay-box .mpesa-label {
+  .pay-box .till-name {
+    color: var(--gold);
+    font-size: 13px;
+  }
+  .pay-box .vodacom-label {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(0, 166, 81, 0.15);
+    background: rgba(226, 0, 26, 0.15);
     padding: 2px 12px;
     border-radius: 12px;
     font-size: 10px;
-    color: var(--mpesa-green);
+    color: var(--vodacom-red);
     font-weight: 600;
   }
 
@@ -943,20 +944,20 @@
     margin-top: 8px;
     width: 100%;
     justify-content: center;
-    background: var(--mpesa-green);
+    background: var(--vodacom-red);
     color: #fff;
     font-size: 12px;
     padding: 7px 12px;
     border-radius: 6px;
   }
   .copy-btn:hover {
-    background: var(--mpesa-dark);
+    background: var(--vodacom-red-dark);
   }
 
-  /* M-Pesa USSD hint */
-  .mpesa-hint {
-    background: var(--mpesa-light);
-    color: var(--mpesa-dark);
+  /* Vodacom payment hint */
+  .payment-hint {
+    background: var(--vodacom-red-light);
+    color: var(--vodacom-red-dark);
     border-radius: 8px;
     padding: 10px 14px;
     font-size: 12px;
@@ -967,8 +968,8 @@
     gap: 10px;
     flex-wrap: wrap;
   }
-  .mpesa-hint strong {
-    background: var(--mpesa-green);
+  .payment-hint strong {
+    background: var(--vodacom-red);
     color: #fff;
     padding: 2px 12px;
     border-radius: 4px;
@@ -995,17 +996,17 @@
     font-family: var(--font-mono);
   }
   .field input:focus {
-    outline: 2px solid var(--mpesa-green);
+    outline: 2px solid var(--vodacom-red);
     outline-offset: 1px;
   }
   .field .err {
-    color: var(--maroon);
+    color: var(--vodacom-red);
     font-size: 11px;
     margin-top: 4px;
     display: none;
   }
   .field.invalid input {
-    border-color: var(--maroon);
+    border-color: var(--vodacom-red);
   }
   .field.invalid .err {
     display: block;
@@ -1014,14 +1015,14 @@
   .confirm-btn {
     width: 100%;
     justify-content: center;
-    background: var(--mpesa-green);
+    background: var(--vodacom-red);
     color: #fff;
     font-size: 14px;
     padding: 12px;
     border-radius: 8px;
   }
   .confirm-btn:hover {
-    background: var(--mpesa-dark);
+    background: var(--vodacom-red-dark);
   }
 
   .success-view {
@@ -1036,8 +1037,8 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: rgba(0, 166, 81, 0.15);
-    color: var(--mpesa-green);
+    background: rgba(226, 0, 26, 0.10);
+    color: var(--vodacom-red);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1070,12 +1071,12 @@
     display: none;
   }
 
-  /* M-Pesa payment method badge on modal */
+  /* Payment method badge on modal */
   .payment-method-badge {
     display: flex;
     align-items: center;
     gap: 6px;
-    background: var(--mpesa-green);
+    background: var(--vodacom-red);
     color: #fff;
     padding: 2px 14px 2px 10px;
     border-radius: 20px;
@@ -1093,13 +1094,16 @@
   <!-- ======== HEADER ======== -->
   <header class="site">
     <div class="wrap nav">
-      <div class="logo">Tunzo<span>Club</span></div>
+      <div class="logo">
+        <span class="vodacom">Vodacom</span>
+        <span class="tunzo">Tunzo</span>
+      </div>
       <ul class="nav-links">
         <li><a href="#jinsi">Jinsi</a></li>
         <li><a href="#zawadi">Zawadi</a></li>
         <li><a href="#maswali">Maswali</a></li>
       </ul>
-      <a href="#packages" class="btn btn-gold nav-cta">Vifurushi</a>
+      <a href="#packages" class="btn btn-red nav-cta">Vifurushi</a>
     </div>
   </header>
 
@@ -1112,14 +1116,19 @@
     <!-- ---- HERO HEADLINE ---- -->
     <div class="wrap">
       <div class="landing-header">
-        <div class="eyebrow">TunzoClub · Tanzania</div>
-        <h1>Chagua kifurushi chako, <em>anza kushinda</em> zawadi</h1>
-        <p>Pata punguzo, bahati nasibu, na zawadi halisi — lipa kwa urahisi kupitia <strong style="color:var(--mpesa-green);">M-Pesa</strong>.</p>
+        <div class="eyebrow">Vodacom Tunzo · Tanzania</div>
+        <h1>
+          <span class="vodacom">Vodacom</span>
+          <span class="tunzo">Tunzo</span>
+          <br>
+          <em>Anza kushinda</em> zawadi
+        </h1>
+        <p>Pata punguzo, bahati nasibu, na zawadi halisi — lipa kwa urahisi kupitia namba ya <strong style="color:var(--vodacom-red);">Vodacom</strong>.</p>
 
-        <!-- M-Pesa Badge -->
-        <div class="mpesa-badge">
+        <!-- Vodacom Badge -->
+        <div class="vodacom-badge">
           <span class="dot"></span>
-          Inaungwa mkono na M-Pesa
+          Vodacom Tunzo — Programu Rasmi
         </div>
 
         <div class="quick-stats">
@@ -1134,8 +1143,8 @@
     <div class="wrap">
       <div class="packages">
         <div class="packages-header">
-          <h2>📦 Vifurushi vya Uanachama</h2>
-          <span class="sub">Lipa kwa M-Pesa · Anza mara moja</span>
+          <h2>📦 Vifurushi vya <span class="vodacom">Vodacom</span> Tunzo</h2>
+          <span class="sub">Chagua na uanze kupata zawadi</span>
         </div>
 
         <div class="package-grid">
@@ -1146,7 +1155,7 @@
             <div class="tier-name">Fedha</div>
             <div class="tier-price">TZS <b>300,000</b> / mwaka</div>
 
-            <span class="payment-note">💳 Lipa kwa M-Pesa</span>
+            <span class="payment-note">📱 Lipa kwa Vodacom</span>
 
             <div class="surprise-preview">
               <span class="prize-tag"><span class="emoji">🎟️</span> 1 Bahati Nasibu</span>
@@ -1158,7 +1167,7 @@
               <li>Arifa za matoleo kwa SMS</li>
             </ul>
 
-            <button class="btn card-btn btn-mpesa" onclick="openModal('Fedha','300,000')">
+            <button class="btn card-btn btn-red" onclick="openModal('Fedha','300,000')">
               Jiunge Sasa
             </button>
           </div>
@@ -1169,7 +1178,7 @@
             <div class="tier-name">Dhahabu</div>
             <div class="tier-price">TZS <b>600,000</b> / mwaka</div>
 
-            <span class="payment-note">💳 Lipa kwa M-Pesa</span>
+            <span class="payment-note">📱 Lipa kwa Vodacom</span>
 
             <div class="surprise-preview">
               <span class="prize-tag"><span class="emoji">🎁</span> Zawadi 1/robo</span>
@@ -1183,7 +1192,7 @@
               <li>Kipaumbele cha huduma</li>
             </ul>
 
-            <button class="btn card-btn btn-mpesa" onclick="openModal('Dhahabu','600,000')">
+            <button class="btn card-btn btn-red" onclick="openModal('Dhahabu','600,000')">
               Jiunge Sasa
             </button>
           </div>
@@ -1194,7 +1203,7 @@
             <div class="tier-name">Almasi</div>
             <div class="tier-price">TZS <b>1,200,000</b> / mwaka</div>
 
-            <span class="payment-note">💳 Lipa kwa M-Pesa</span>
+            <span class="payment-note">📱 Lipa kwa Vodacom</span>
 
             <div class="surprise-preview">
               <span class="prize-tag"><span class="emoji">🎁</span> Zawadi 2/robo</span>
@@ -1210,7 +1219,7 @@
               <li>Simu ya moja kwa moja kwa huduma</li>
             </ul>
 
-            <button class="btn card-btn btn-mpesa" onclick="openModal('Almasi','1,200,000')">
+            <button class="btn card-btn btn-red" onclick="openModal('Almasi','1,200,000')">
               Jiunge Sasa
             </button>
           </div>
@@ -1221,7 +1230,7 @@
             <div class="tier-name" style="color:var(--gold);">Taji</div>
             <div class="tier-price">TZS <b>2,500,000</b> / mwaka</div>
 
-            <span class="payment-note">💳 Lipa kwa M-Pesa</span>
+            <span class="payment-note">📱 Lipa kwa Vodacom</span>
 
             <div class="surprise-preview">
               <span class="prize-tag"><span class="emoji">👑</span> Zawadi Kubwa</span>
@@ -1237,7 +1246,7 @@
               <li>Mwaliko wa matukio maalum</li>
             </ul>
 
-            <button class="btn card-btn btn-mpesa" onclick="openModal('Taji','2,500,000')">
+            <button class="btn card-btn btn-red" onclick="openModal('Taji','2,500,000')">
               Jiunge Sasa
             </button>
           </div>
@@ -1260,7 +1269,7 @@
       <div class="sec-head">
         <div class="eyebrow">Mchakato</div>
         <h2>Hatua 3 tu — anza leo</h2>
-        <p>Hakuna app. Kila kitu kupitia <strong style="color:var(--mpesa-green);">M-Pesa</strong> na namba ya biashara.</p>
+        <p>Hakuna app. Tuma malipo kwenye namba ya <strong style="color:var(--vodacom-red);">Vodacom</strong> iliyoonyeshwa.</p>
       </div>
       <div class="steps">
         <div class="step">
@@ -1270,9 +1279,9 @@
         </div>
         <div class="step">
           <div class="num">02</div>
-          <h3>Lipia kwa M-Pesa</h3>
-          <p>Nenda kwenye M-Pesa, chagua "Lipa kwa M-Pesa" na tumia namba yetu ya biashara.</p>
-          <span class="mpesa-icon">*150*00#</span>
+          <h3>Tuma Malipo</h3>
+          <p>Tuma kiasi cha kifurushi chako kwenye namba ya Vodacom iliyoonyeshwa.</p>
+          <span class="pay-number">📱 0791 045 431</span>
         </div>
         <div class="step">
           <div class="num">03</div>
@@ -1331,7 +1340,7 @@
       </div>
       <div class="testi-mini">
         <blockquote>
-          "Nilijiunga na Dhahabu, mwezi wa tatu nikapata simu mpya. Malipo yalikuwa rahisi kupitia M-Pesa."
+          "Nilijiunga na Dhahabu, mwezi wa tatu nikapata simu mpya. Malipo yalikuwa rahisi."
           <div class="who"><b>Asha M.</b> · Dar es Salaam <span class="badge badge-green" style="font-size:8px;padding:1px 8px;margin-left:6px;">Amelipwa</span></div>
         </blockquote>
         <blockquote>
@@ -1358,8 +1367,8 @@
       </div>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">Malipo yanafanyika vipi kwa M-Pesa? <span class="plus">+</span></button>
-          <div class="faq-a"><p>Nenda kwenye M-Pesa, chagua "Lipa kwa M-Pesa" (Pay Bill), ingiza Namba ya Biashara ya TunzoClub, kisha ingiza kiasi cha kifurushi chako. Baada ya malipo, thibitisha namba yako ya simu kwenye tovuti hii.</p></div>
+          <button class="faq-q" onclick="toggleFaq(this)">Malipo yanafanyika vipi? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Tuma kiasi cha kifurushi chako kwenye namba ya Vodacom <strong>0791 045 431</strong> (Jina: Joseph). Baada ya malipo, thibitisha namba yako ya simu kwenye tovuti hii.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Uanachama unadumu muda gani? <span class="plus">+</span></button>
@@ -1367,7 +1376,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Naweza kubadilisha kifurushi baadaye? <span class="plus">+</span></button>
-          <div class="faq-a"><p>Ndiyo. Unaweza kupandisha kifurushi wakati wowote kwa kulipa tofauti ya bei kupitia M-Pesa.</p></div>
+          <div class="faq-a"><p>Ndiyo. Unaweza kupandisha kifurushi wakati wowote kwa kulipa tofauti ya bei.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Nini kitatokea nikishinda? <span class="plus">+</span></button>
@@ -1385,8 +1394,11 @@
     <div class="wrap">
       <div class="foot-grid">
         <div class="foot-col">
-          <div class="logo">Tunzo<span>Club</span></div>
-          <p style="margin-top:8px;font-size:13px;color:var(--mist);">Kilabu cha uanachama kinachotoa punguzo na tunzo kwa Watanzania. Malipo yanakubaliwa kupitia M-Pesa.</p>
+          <div class="logo">
+            <span class="vodacom">Vodacom</span>
+            <span class="tunzo">Tunzo</span>
+          </div>
+          <p style="margin-top:8px;font-size:13px;color:var(--mist);">Programu ya uanachama inayotoa punguzo na zawadi kwa Watanzania. Malipo yanatumwa kwa namba ya Vodacom.</p>
         </div>
         <div class="foot-col">
           <h5>Kiungo</h5>
@@ -1400,25 +1412,25 @@
         <div class="foot-col">
           <h5>Wasiliana</h5>
           <ul>
-            <li><a href="tel:+255000000000">+255 000 000 000</a></li>
-            <li><a href="mailto:msaada@tunzoclub.co.tz">msaada@tunzoclub.co.tz</a></li>
+            <li><a href="tel:+255791045431">0791 045 431</a></li>
+            <li><a href="mailto:msaada@vodacomtunzo.co.tz">msaada@vodacomtunzo.co.tz</a></li>
           </ul>
         </div>
       </div>
 
       <div class="disclaimer">
-        <strong>Kumbuka:</strong> Namba ya malipo inayoonekana kwenye tovuti hii ni nafasi-mfano (placeholder). Kabla ya kuchapisha, badilisha na namba halisi ya biashara ya TunzoClub iliyosajiliwa na M-Pesa.
+        <strong>📌 Taarifa:</strong> Namba ya malipo ni <strong>0791 045 431</strong> (Jina: Joseph). Hakikisha unatuma kiasi sahihi cha kifurushi chako. Baada ya malipo, thibitisha kwenye tovuti hii.
       </div>
 
       <div class="foot-bottom">
-        <span>© 2026 TunzoClub TZ</span>
-        <span>Sio kampuni tanzu ya Vodacom, Airtel au Halotel.</span>
+        <span>© 2026 Vodacom Tunzo</span>
+        <span>Programu huru ya zawadi kwa Watanzania.</span>
       </div>
     </div>
   </footer>
 
   <!-- ============================================================ -->
-  <!-- 🟢 MODAL — M-PESA PAYMENT                                   -->
+  <!-- 🔴 MODAL — VODACOM PAYMENT                                  -->
   <!-- ============================================================ -->
 
   <div class="modal-overlay" id="modalOverlay">
@@ -1429,22 +1441,23 @@
         <h3 id="modalTierName">Fedha</h3>
         <div class="modal-tier" id="modalPrice">TZS 300,000 / mwaka</div>
 
-        <!-- M-Pesa Payment Method Badge -->
+        <!-- Payment Method Badge -->
         <div class="payment-method-badge">
-          💳 M-Pesa
+          📱 Vodacom
         </div>
 
-        <!-- M-Pesa USSD Hint -->
-        <div class="mpesa-hint">
-          <strong>*150*00#</strong>
-          <span>Nenda M-Pesa → Lipa kwa M-Pesa</span>
+        <!-- Payment Hint -->
+        <div class="payment-hint">
+          <strong>0791 045 431</strong>
+          <span>Jina: Joseph</span>
         </div>
 
         <div class="pay-box">
-          <div class="row"><span>Namba ya Biashara</span><b class="till">123456</b></div>
+          <div class="row"><span>Namba ya Malipo</span><b class="till">0791 045 431</b></div>
+          <div class="row"><span>Jina</span><b class="till-name">Joseph</b></div>
           <div class="row"><span>Kiasi</span><b id="payAmount">TZS 300,000</b></div>
           <div class="row"><span>Maelezo (Reference)</span><b id="refCode">TC-XXXX</b></div>
-          <button class="btn copy-btn" onclick="copyTill()">📋 Nakili Namba ya Biashara</button>
+          <button class="btn copy-btn" onclick="copyTill()">📋 Nakili Namba</button>
         </div>
 
         <div class="field" id="phoneField">
@@ -1459,14 +1472,14 @@
       <div class="success-view" id="successView">
         <div class="success-icon">✓</div>
         <h3>Umethibitishwa!</h3>
-        <p style="color:#5B5646;font-size:13.5px;">Karibu TunzoClub. Uanachama wako unaanza sasa.</p>
+        <p style="color:#5B5646;font-size:13.5px;">Karibu Vodacom Tunzo. Uanachama wako unaanza sasa.</p>
         <div class="receipt">
           <div class="row"><span>Kifurushi</span><b id="rcptTier">Fedha</b></div>
           <div class="row"><span>Kiasi</span><b id="rcptAmount">TZS 300,000</b></div>
           <div class="row"><span>Namba</span><b id="rcptPhone">—</b></div>
           <div class="row"><span>Namba ya Uanachama</span><b id="rcptId">—</b></div>
         </div>
-        <button class="btn btn-mpesa" style="width:100%;justify-content:center;" onclick="closeModal()">Funga</button>
+        <button class="btn btn-red" style="width:100%;justify-content:center;" onclick="closeModal()">Funga</button>
       </div>
     </div>
   </div>
@@ -1492,7 +1505,8 @@
     }
 
     // ---- Payment modal ----
-    const BUSINESS_NUMBER = "123456"; // TODO: Replace with real M-Pesa Business Number
+    const PAYMENT_NUMBER = "0791 045 431";
+    const PAYMENT_NAME = "Joseph";
     let currentTier = { name: '', price: '' };
     let currentRef = '';
 
@@ -1528,7 +1542,7 @@
     });
 
     function copyTill() {
-      navigator.clipboard?.writeText(BUSINESS_NUMBER);
+      navigator.clipboard?.writeText(PAYMENT_NUMBER.replace(/\s/g, ''));
       const btn = document.querySelector('.copy-btn');
       const original = btn.textContent;
       btn.textContent = '✓ Imenakiliwa';
@@ -1550,7 +1564,7 @@
       }
       field.classList.remove('invalid');
 
-      const memberId = 'TC-' + Math.floor(100000 + Math.random() * 899999);
+      const memberId = 'VT-' + Math.floor(100000 + Math.random() * 899999);
       const record = {
         id: memberId,
         tier: currentTier.name,
@@ -1560,9 +1574,9 @@
         date: new Date().toISOString()
       };
       try {
-        const existing = JSON.parse(localStorage.getItem('tunzoclub_members') || '[]');
+        const existing = JSON.parse(localStorage.getItem('vodacom_tunzo_members') || '[]');
         existing.push(record);
-        localStorage.setItem('tunzoclub_members', JSON.stringify(existing));
+        localStorage.setItem('vodacom_tunzo_members', JSON.stringify(existing));
       } catch (e) { /* ignore */ }
 
       document.getElementById('rcptTier').textContent = currentTier.name;
