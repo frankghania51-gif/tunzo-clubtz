@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TunzoClub — Vifurushi vya Uanachama</title>
+<title>TunzoClub — Vifurushi vya Uanachama | M-Pesa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -20,6 +20,9 @@
     --maroon: #7C2A38;
     --mist: #A9A48C;
     --line: #33392F;
+    --mpesa-green: #00A651;
+    --mpesa-dark: #1A5C2A;
+    --mpesa-light: #E8F5E9;
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Work Sans', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
@@ -117,12 +120,17 @@
     color: var(--ink);
   }
   .badge-green {
-    background: var(--green);
+    background: var(--mpesa-green);
     color: #fff;
   }
   .badge-maroon {
     background: var(--maroon);
     color: #fff;
+  }
+  .badge-mpesa {
+    background: var(--mpesa-green);
+    color: #fff;
+    font-weight: 700;
   }
 
   /* ---------- NAV ---------- */
@@ -211,12 +219,21 @@
     color: var(--gold);
   }
   .btn-green {
-    background: var(--green-deep);
+    background: var(--mpesa-green);
     color: #fff;
   }
   .btn-green:hover {
-    background: var(--green);
+    background: var(--mpesa-dark);
     transform: translateY(-2px);
+  }
+  .btn-mpesa {
+    background: var(--mpesa-green);
+    color: #fff;
+  }
+  .btn-mpesa:hover {
+    background: var(--mpesa-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -8px rgba(0, 166, 81, 0.5);
   }
   .btn-full {
     width: 100%;
@@ -224,31 +241,31 @@
   }
 
   /* ============================================================ */
-  /* 🎯 HERO + VIFURUSHI — COMBINED LANDING                      */
+  /* 🎯 LANDING — HERO + VIFURUSHI                                */
   /* ============================================================ */
 
   .landing {
-    padding: 32px 0 48px;
+    padding: 24px 0 40px;
     position: relative;
     overflow: hidden;
     background:
       radial-gradient(ellipse 600px 300px at 80% 0%, rgba(242, 169, 59, 0.10), transparent 60%),
-      radial-gradient(ellipse 400px 300px at 20% 100%, rgba(35, 165, 102, 0.08), transparent 60%);
+      radial-gradient(ellipse 400px 300px at 20% 100%, rgba(0, 166, 81, 0.08), transparent 60%);
   }
 
   /* ---- HERO HEADLINE ---- */
   .landing-header {
     text-align: center;
-    padding-bottom: 32px;
+    padding-bottom: 24px;
     border-bottom: 1px solid var(--line);
   }
   .landing-header .eyebrow {
     justify-content: center;
   }
   .landing-header h1 {
-    font-size: clamp(28px, 5vw, 48px);
+    font-size: clamp(26px, 4.8vw, 44px);
     line-height: 1.08;
-    margin: 12px 0 8px;
+    margin: 10px 0 6px;
   }
   .landing-header h1 em {
     font-style: normal;
@@ -256,9 +273,43 @@
   }
   .landing-header p {
     color: var(--mist);
-    font-size: 15px;
-    max-width: 500px;
+    font-size: 14.5px;
+    max-width: 480px;
     margin: 0 auto;
+  }
+
+  /* ---- M-Pesa Badge ---- */
+  .mpesa-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 166, 81, 0.12);
+    border: 1px solid rgba(0, 166, 81, 0.2);
+    border-radius: 30px;
+    padding: 4px 16px 4px 12px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--mpesa-green);
+    font-weight: 500;
+  }
+  .mpesa-badge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--mpesa-green);
+    display: inline-block;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(0.8);
+    }
   }
 
   /* ---- QUICK STATS ---- */
@@ -267,7 +318,7 @@
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 16px;
+    margin-top: 14px;
   }
   .quick-stats .stat {
     font-family: var(--font-mono);
@@ -282,27 +333,27 @@
   }
 
   /* ============================================================ */
-  /* 🎴 VIFURUSHI CARDS — MAIN FOCUS                            */
+  /* 🎴 VIFURUSHI CARDS                                           */
   /* ============================================================ */
 
   .packages {
-    margin-top: 32px;
+    margin-top: 28px;
   }
 
   .packages-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     flex-wrap: wrap;
     gap: 8px;
   }
   .packages-header h2 {
-    font-size: clamp(20px, 3vw, 28px);
+    font-size: clamp(18px, 2.8vw, 26px);
   }
   .packages-header .sub {
     color: var(--mist);
-    font-size: 13px;
+    font-size: 12.5px;
   }
 
   /* ----- CARD GRID (MOBILE-FIRST) ----- */
@@ -390,12 +441,25 @@
     color: var(--paper);
   }
 
-  /* Surprise preview — the "what you can win" mini list */
+  /* M-Pesa payment note on card */
+  .package-card .payment-note {
+    font-size: 9px;
+    color: var(--mpesa-green);
+    font-family: var(--font-mono);
+    background: rgba(0, 166, 81, 0.08);
+    padding: 2px 10px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  /* Surprise preview */
   .package-card .surprise-preview {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
-    margin: 8px 0 12px;
+    margin: 6px 0 10px;
   }
   .package-card .surprise-preview .prize-tag {
     background: rgba(242, 169, 59, 0.10);
@@ -413,10 +477,10 @@
     font-size: 12px;
   }
 
-  /* Benefits list — compact */
+  /* Benefits list */
   .package-card .benefits {
     list-style: none;
-    margin: 6px 0 14px;
+    margin: 4px 0 12px;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -431,7 +495,7 @@
   }
   .package-card .benefits li::before {
     content: '✓';
-    color: var(--green);
+    color: var(--mpesa-green);
     font-weight: 700;
     font-size: 11px;
   }
@@ -446,12 +510,13 @@
     width: 100%;
     font-weight: 600;
   }
-  .package-card .card-btn.btn-gold {
-    background: var(--gold);
-    color: #221604;
+  .package-card .card-btn.btn-mpesa {
+    background: var(--mpesa-green);
+    color: #fff;
   }
-  .package-card .card-btn.btn-gold:hover {
-    box-shadow: 0 4px 16px -4px rgba(242, 169, 59, 0.4);
+  .package-card .card-btn.btn-mpesa:hover {
+    background: var(--mpesa-dark);
+    box-shadow: 0 4px 16px -4px rgba(0, 166, 81, 0.4);
   }
 
   /* Special card: Taji gets a glow */
@@ -464,7 +529,7 @@
   }
 
   /* ============================================================ */
-  /* 📱 MOBILE ADJUSTMENTS                                       */
+  /* 📱 MOBILE ADJUSTMENTS                                        */
   /* ============================================================ */
 
   @media(max-width: 420px) {
@@ -504,6 +569,9 @@
     .quick-stats .stat {
       font-size: 10px;
     }
+    .package-card .payment-note {
+      font-size: 8px;
+    }
   }
 
   @media(max-width: 360px) {
@@ -539,32 +607,32 @@
   /* ---- "VIEW ALL GIFTS" CTA ---- */
   .packages-footer {
     text-align: center;
-    margin-top: 24px;
+    margin-top: 20px;
   }
   .packages-footer .btn {
     font-size: 13px;
   }
 
   /* ============================================================ */
-  /* 🎁 OTHER SECTIONS (compact)                                */
+  /* 🎁 OTHER SECTIONS (compact)                                 */
   /* ============================================================ */
 
   section {
-    padding: 48px 0;
+    padding: 40px 0;
   }
 
   .sec-head {
     max-width: 600px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
   .sec-head h2 {
-    font-size: clamp(22px, 3vw, 32px);
-    margin-top: 8px;
+    font-size: clamp(20px, 2.8vw, 30px);
+    margin-top: 6px;
   }
   .sec-head p {
     color: var(--mist);
-    margin-top: 8px;
-    font-size: 14.5px;
+    margin-top: 6px;
+    font-size: 14px;
   }
 
   /* ----- HOW IT WORKS (simplified) ----- */
@@ -600,6 +668,17 @@
     color: var(--mist);
     font-size: 12.5px;
     margin: 0;
+  }
+  .step .mpesa-icon {
+    display: inline-block;
+    background: var(--mpesa-green);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 1px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
   }
 
   /* ----- GIFTS SHOWCASE (mini) ----- */
@@ -677,12 +756,12 @@
     border: none;
     color: var(--paper);
     text-align: left;
-    padding: 16px 4px;
+    padding: 14px 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 600;
   }
   .faq-q .plus {
@@ -701,21 +780,21 @@
   }
   .faq-a p {
     color: var(--mist);
-    font-size: 13.5px;
-    padding: 0 4px 16px;
+    font-size: 13px;
+    padding: 0 4px 14px;
     margin: 0;
   }
 
   /* ----- FOOTER ----- */
   footer {
-    padding: 40px 0 24px;
+    padding: 36px 0 20px;
     border-top: 1px solid var(--line);
   }
   .foot-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   @media(max-width: 600px) {
     .foot-grid {
@@ -753,7 +832,7 @@
     gap: 12px;
     justify-content: space-between;
     align-items: center;
-    padding-top: 16px;
+    padding-top: 14px;
     border-top: 1px solid var(--line);
     font-size: 11px;
     color: var(--mist);
@@ -766,12 +845,12 @@
     padding: 12px 16px;
     font-size: 11.5px;
     color: var(--mist);
-    margin-top: 20px;
+    margin-top: 16px;
     line-height: 1.6;
   }
 
   /* ============================================================ */
-  /* 🟡 MODAL (same as before, kept consistent)                  */
+  /* 🟢 MODAL — M-PESA STYLE                                     */
   /* ============================================================ */
 
   .modal-overlay {
@@ -820,6 +899,8 @@
     color: var(--gold-deep);
     margin-bottom: 16px;
   }
+
+  /* M-Pesa Pay Box */
   .pay-box {
     background: var(--ink);
     color: var(--paper);
@@ -827,6 +908,7 @@
     padding: 14px 16px;
     margin-bottom: 16px;
     font-family: var(--font-mono);
+    border-left: 4px solid var(--mpesa-green);
   }
   .pay-box .row {
     display: flex;
@@ -841,19 +923,58 @@
   }
   .pay-box .till {
     font-size: 20px;
-    color: var(--gold);
+    color: var(--mpesa-green);
     letter-spacing: 0.04em;
+    font-weight: 700;
   }
+  .pay-box .mpesa-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 166, 81, 0.15);
+    padding: 2px 12px;
+    border-radius: 12px;
+    font-size: 10px;
+    color: var(--mpesa-green);
+    font-weight: 600;
+  }
+
   .copy-btn {
     margin-top: 8px;
     width: 100%;
     justify-content: center;
-    background: var(--gold);
-    color: #221604;
+    background: var(--mpesa-green);
+    color: #fff;
     font-size: 12px;
     padding: 7px 12px;
     border-radius: 6px;
   }
+  .copy-btn:hover {
+    background: var(--mpesa-dark);
+  }
+
+  /* M-Pesa USSD hint */
+  .mpesa-hint {
+    background: var(--mpesa-light);
+    color: var(--mpesa-dark);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    margin-bottom: 14px;
+    font-family: var(--font-mono);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .mpesa-hint strong {
+    background: var(--mpesa-green);
+    color: #fff;
+    padding: 2px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+  }
+
   .field {
     margin-bottom: 12px;
   }
@@ -874,7 +995,7 @@
     font-family: var(--font-mono);
   }
   .field input:focus {
-    outline: 2px solid var(--gold);
+    outline: 2px solid var(--mpesa-green);
     outline-offset: 1px;
   }
   .field .err {
@@ -889,18 +1010,20 @@
   .field.invalid .err {
     display: block;
   }
+
   .confirm-btn {
     width: 100%;
     justify-content: center;
-    background: var(--green-deep);
+    background: var(--mpesa-green);
     color: #fff;
     font-size: 14px;
     padding: 12px;
     border-radius: 8px;
   }
   .confirm-btn:hover {
-    background: var(--green);
+    background: var(--mpesa-dark);
   }
+
   .success-view {
     display: none;
     text-align: center;
@@ -913,8 +1036,8 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: rgba(35, 165, 102, 0.15);
-    color: var(--green-deep);
+    background: rgba(0, 166, 81, 0.15);
+    color: var(--mpesa-green);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -946,6 +1069,23 @@
   .form-view.hidden {
     display: none;
   }
+
+  /* M-Pesa payment method badge on modal */
+  .payment-method-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--mpesa-green);
+    color: #fff;
+    padding: 2px 14px 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    width: fit-content;
+  }
 </style>
 </head>
 <body>
@@ -964,7 +1104,7 @@
   </header>
 
   <!-- ============================================================ -->
-  <!-- 🚀 LANDING — HERO + VIFURUSHI IMMEDIATELY VISIBLE           -->
+  <!-- 🚀 LANDING — HERO + VIFURUSHI                                -->
   <!-- ============================================================ -->
 
   <section class="landing" id="packages">
@@ -974,7 +1114,13 @@
       <div class="landing-header">
         <div class="eyebrow">TunzoClub · Tanzania</div>
         <h1>Chagua kifurushi chako, <em>anza kushinda</em> zawadi</h1>
-        <p>Pata punguzo, bahati nasibu, na zawadi halisi — moja kwa moja kupitia pesa ya simu.</p>
+        <p>Pata punguzo, bahati nasibu, na zawadi halisi — lipa kwa urahisi kupitia <strong style="color:var(--mpesa-green);">M-Pesa</strong>.</p>
+
+        <!-- M-Pesa Badge -->
+        <div class="mpesa-badge">
+          <span class="dot"></span>
+          Inaungwa mkono na M-Pesa
+        </div>
 
         <div class="quick-stats">
           <div class="stat"><b>4</b> Vifurushi</div>
@@ -989,7 +1135,7 @@
       <div class="packages">
         <div class="packages-header">
           <h2>📦 Vifurushi vya Uanachama</h2>
-          <span class="sub">Chagua na uanze kupata tunzo</span>
+          <span class="sub">Lipa kwa M-Pesa · Anza mara moja</span>
         </div>
 
         <div class="package-grid">
@@ -999,6 +1145,8 @@
             <div class="tier-badge">Kifurushi 01</div>
             <div class="tier-name">Fedha</div>
             <div class="tier-price">TZS <b>300,000</b> / mwaka</div>
+
+            <span class="payment-note">💳 Lipa kwa M-Pesa</span>
 
             <div class="surprise-preview">
               <span class="prize-tag"><span class="emoji">🎟️</span> 1 Bahati Nasibu</span>
@@ -1010,7 +1158,7 @@
               <li>Arifa za matoleo kwa SMS</li>
             </ul>
 
-            <button class="btn card-btn btn-gold" onclick="openModal('Fedha','300,000')">
+            <button class="btn card-btn btn-mpesa" onclick="openModal('Fedha','300,000')">
               Jiunge Sasa
             </button>
           </div>
@@ -1020,6 +1168,8 @@
             <div class="tier-badge">Kifurushi 02</div>
             <div class="tier-name">Dhahabu</div>
             <div class="tier-price">TZS <b>600,000</b> / mwaka</div>
+
+            <span class="payment-note">💳 Lipa kwa M-Pesa</span>
 
             <div class="surprise-preview">
               <span class="prize-tag"><span class="emoji">🎁</span> Zawadi 1/robo</span>
@@ -1033,7 +1183,7 @@
               <li>Kipaumbele cha huduma</li>
             </ul>
 
-            <button class="btn card-btn btn-gold" onclick="openModal('Dhahabu','600,000')">
+            <button class="btn card-btn btn-mpesa" onclick="openModal('Dhahabu','600,000')">
               Jiunge Sasa
             </button>
           </div>
@@ -1043,6 +1193,8 @@
             <div class="tier-badge">Kifurushi 03 · Maarufu</div>
             <div class="tier-name">Almasi</div>
             <div class="tier-price">TZS <b>1,200,000</b> / mwaka</div>
+
+            <span class="payment-note">💳 Lipa kwa M-Pesa</span>
 
             <div class="surprise-preview">
               <span class="prize-tag"><span class="emoji">🎁</span> Zawadi 2/robo</span>
@@ -1058,7 +1210,7 @@
               <li>Simu ya moja kwa moja kwa huduma</li>
             </ul>
 
-            <button class="btn card-btn btn-gold" onclick="openModal('Almasi','1,200,000')">
+            <button class="btn card-btn btn-mpesa" onclick="openModal('Almasi','1,200,000')">
               Jiunge Sasa
             </button>
           </div>
@@ -1068,6 +1220,8 @@
             <div class="tier-badge">Kifurushi 04 · VIP</div>
             <div class="tier-name" style="color:var(--gold);">Taji</div>
             <div class="tier-price">TZS <b>2,500,000</b> / mwaka</div>
+
+            <span class="payment-note">💳 Lipa kwa M-Pesa</span>
 
             <div class="surprise-preview">
               <span class="prize-tag"><span class="emoji">👑</span> Zawadi Kubwa</span>
@@ -1083,7 +1237,7 @@
               <li>Mwaliko wa matukio maalum</li>
             </ul>
 
-            <button class="btn card-btn btn-gold" onclick="openModal('Taji','2,500,000')">
+            <button class="btn card-btn btn-mpesa" onclick="openModal('Taji','2,500,000')">
               Jiunge Sasa
             </button>
           </div>
@@ -1106,7 +1260,7 @@
       <div class="sec-head">
         <div class="eyebrow">Mchakato</div>
         <h2>Hatua 3 tu — anza leo</h2>
-        <p>Hakuna app. Kila kitu kupitia namba ya biashara ya pesa ya simu.</p>
+        <p>Hakuna app. Kila kitu kupitia <strong style="color:var(--mpesa-green);">M-Pesa</strong> na namba ya biashara.</p>
       </div>
       <div class="steps">
         <div class="step">
@@ -1116,13 +1270,14 @@
         </div>
         <div class="step">
           <div class="num">02</div>
-          <h3>Lipia kupitia namba</h3>
-          <p>Tuma malipo kwenye namba ya biashara iliyoonyeshwa.</p>
+          <h3>Lipia kwa M-Pesa</h3>
+          <p>Nenda kwenye M-Pesa, chagua "Lipa kwa M-Pesa" na tumia namba yetu ya biashara.</p>
+          <span class="mpesa-icon">*150*00#</span>
         </div>
         <div class="step">
           <div class="num">03</div>
           <h3>Thibitisha na anza</h3>
-          <p>Weka namba yako, tunathibitisha, na uanachama wako unaanza.</p>
+          <p>Weka namba yako ya simu, tunathibitisha malipo, na uanachama wako unaanza.</p>
         </div>
       </div>
     </div>
@@ -1176,7 +1331,7 @@
       </div>
       <div class="testi-mini">
         <blockquote>
-          "Nilijiunga na Dhahabu, mwezi wa tatu nikapata simu mpya."
+          "Nilijiunga na Dhahabu, mwezi wa tatu nikapata simu mpya. Malipo yalikuwa rahisi kupitia M-Pesa."
           <div class="who"><b>Asha M.</b> · Dar es Salaam <span class="badge badge-green" style="font-size:8px;padding:1px 8px;margin-left:6px;">Amelipwa</span></div>
         </blockquote>
         <blockquote>
@@ -1203,8 +1358,8 @@
       </div>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">Malipo yanafanyika vipi? <span class="plus">+</span></button>
-          <div class="faq-a"><p>Malipo yote yanafanyika kupitia namba rasmi ya biashara ya pesa ya simu ya TunzoClub. Baada ya kulipa, unathibitisha namba yako ya simu ili uanachama wako uanze.</p></div>
+          <button class="faq-q" onclick="toggleFaq(this)">Malipo yanafanyika vipi kwa M-Pesa? <span class="plus">+</span></button>
+          <div class="faq-a"><p>Nenda kwenye M-Pesa, chagua "Lipa kwa M-Pesa" (Pay Bill), ingiza Namba ya Biashara ya TunzoClub, kisha ingiza kiasi cha kifurushi chako. Baada ya malipo, thibitisha namba yako ya simu kwenye tovuti hii.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Uanachama unadumu muda gani? <span class="plus">+</span></button>
@@ -1212,7 +1367,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Naweza kubadilisha kifurushi baadaye? <span class="plus">+</span></button>
-          <div class="faq-a"><p>Ndiyo. Unaweza kupandisha kifurushi wakati wowote kwa kulipa tofauti ya bei.</p></div>
+          <div class="faq-a"><p>Ndiyo. Unaweza kupandisha kifurushi wakati wowote kwa kulipa tofauti ya bei kupitia M-Pesa.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Nini kitatokea nikishinda? <span class="plus">+</span></button>
@@ -1231,7 +1386,7 @@
       <div class="foot-grid">
         <div class="foot-col">
           <div class="logo">Tunzo<span>Club</span></div>
-          <p style="margin-top:8px;font-size:13px;color:var(--mist);">Kilabu cha uanachama kinachotoa punguzo na tunzo kwa Watanzania.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--mist);">Kilabu cha uanachama kinachotoa punguzo na tunzo kwa Watanzania. Malipo yanakubaliwa kupitia M-Pesa.</p>
         </div>
         <div class="foot-col">
           <h5>Kiungo</h5>
@@ -1252,18 +1407,18 @@
       </div>
 
       <div class="disclaimer">
-        <strong>Kumbuka:</strong> Namba ya malipo inayoonekana kwenye tovuti hii ni nafasi-mfano (placeholder). Kabla ya kuchapisha, badilisha na namba halisi ya biashara ya TunzoClub.
+        <strong>Kumbuka:</strong> Namba ya malipo inayoonekana kwenye tovuti hii ni nafasi-mfano (placeholder). Kabla ya kuchapisha, badilisha na namba halisi ya biashara ya TunzoClub iliyosajiliwa na M-Pesa.
       </div>
 
       <div class="foot-bottom">
         <span>© 2026 TunzoClub TZ</span>
-        <span>Sio kampuni tanzu ya Yas, Vodacom, Airtel au Halotel.</span>
+        <span>Sio kampuni tanzu ya Vodacom, Airtel au Halotel.</span>
       </div>
     </div>
   </footer>
 
   <!-- ============================================================ -->
-  <!-- 🟡 MODAL                                                    -->
+  <!-- 🟢 MODAL — M-PESA PAYMENT                                   -->
   <!-- ============================================================ -->
 
   <div class="modal-overlay" id="modalOverlay">
@@ -1274,11 +1429,22 @@
         <h3 id="modalTierName">Fedha</h3>
         <div class="modal-tier" id="modalPrice">TZS 300,000 / mwaka</div>
 
+        <!-- M-Pesa Payment Method Badge -->
+        <div class="payment-method-badge">
+          💳 M-Pesa
+        </div>
+
+        <!-- M-Pesa USSD Hint -->
+        <div class="mpesa-hint">
+          <strong>*150*00#</strong>
+          <span>Nenda M-Pesa → Lipa kwa M-Pesa</span>
+        </div>
+
         <div class="pay-box">
-          <div class="row"><span>Lipa kupitia</span><b>Mixx / Namba ya Biashara</b></div>
-          <div class="row"><span>Namba ya Malipo</span><b class="till">255-XXX-XXXXXX</b></div>
+          <div class="row"><span>Namba ya Biashara</span><b class="till">123456</b></div>
           <div class="row"><span>Kiasi</span><b id="payAmount">TZS 300,000</b></div>
-          <button class="btn copy-btn" onclick="copyTill()">📋 Nakili Namba</button>
+          <div class="row"><span>Maelezo (Reference)</span><b id="refCode">TC-XXXX</b></div>
+          <button class="btn copy-btn" onclick="copyTill()">📋 Nakili Namba ya Biashara</button>
         </div>
 
         <div class="field" id="phoneField">
@@ -1300,7 +1466,7 @@
           <div class="row"><span>Namba</span><b id="rcptPhone">—</b></div>
           <div class="row"><span>Namba ya Uanachama</span><b id="rcptId">—</b></div>
         </div>
-        <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="closeModal()">Funga</button>
+        <button class="btn btn-mpesa" style="width:100%;justify-content:center;" onclick="closeModal()">Funga</button>
       </div>
     </div>
   </div>
@@ -1326,14 +1492,21 @@
     }
 
     // ---- Payment modal ----
-    const TILL_NUMBER = "255-XXX-XXXXXX"; // TODO: replace with real till number
+    const BUSINESS_NUMBER = "123456"; // TODO: Replace with real M-Pesa Business Number
     let currentTier = { name: '', price: '' };
+    let currentRef = '';
+
+    function generateRef() {
+      return 'TC-' + Math.floor(10000 + Math.random() * 89999);
+    }
 
     function openModal(tier, price) {
       currentTier = { name: tier, price: price };
+      currentRef = generateRef();
       document.getElementById('modalTierName').textContent = tier;
       document.getElementById('modalPrice').textContent = 'TZS ' + price + ' / mwaka';
       document.getElementById('payAmount').textContent = 'TZS ' + price;
+      document.getElementById('refCode').textContent = currentRef;
       document.getElementById('formView').classList.remove('hidden');
       document.getElementById('successView').classList.remove('active');
       document.getElementById('phoneInput').value = '';
@@ -1355,7 +1528,7 @@
     });
 
     function copyTill() {
-      navigator.clipboard?.writeText(TILL_NUMBER.replace(/-/g, ''));
+      navigator.clipboard?.writeText(BUSINESS_NUMBER);
       const btn = document.querySelector('.copy-btn');
       const original = btn.textContent;
       btn.textContent = '✓ Imenakiliwa';
@@ -1383,6 +1556,7 @@
         tier: currentTier.name,
         price: currentTier.price,
         phone: input.value.trim(),
+        ref: currentRef,
         date: new Date().toISOString()
       };
       try {
